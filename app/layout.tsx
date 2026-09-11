@@ -25,11 +25,23 @@ export const metadata: Metadata = {
     template: `%s | ${company.name}`
   },
   description: company.mission,
-  // Set NEXT_PUBLIC_SITE_URL in Vercel (e.g. https://your-app.vercel.app)
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://busia-agro.vercel.app"
   )
 };
+
+const themeInitScript = `
+(function() {
+  try {
+    var t = localStorage.getItem('theme');
+    if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  } catch (e) {}
+})();
+`;
 
 export default function RootLayout({
   children
@@ -37,8 +49,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable}`}>
-      <body className="font-sans antialiased">
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${workSans.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="font-sans antialiased transition-colors duration-200">
         <Navbar />
         <main>{children}</main>
         <Footer />

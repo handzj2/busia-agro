@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { company } from "@/content/company";
 import LeafIcon from "@/components/LeafIcon";
+import ThemeToggle from "@/components/ThemeToggle";
 
 // Grouped so the top-level nav stays at 5 items on desktop and doesn't
 // force a cramped hamburger-only experience on mobile. "What We Do" and
@@ -85,6 +86,7 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link
             href="/contact"
             className="hidden rounded-sm border border-harvest px-4 py-2 text-sm text-harvest transition-all duration-200 hover:bg-harvest hover:text-ink hover:shadow-md md:inline-block"

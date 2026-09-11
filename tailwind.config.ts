@@ -3,6 +3,7 @@ import type { Config } from "tailwindcss";
 // Design tokens for the agro-company site.
 // See docs/DESIGN.md for the rationale behind these choices.
 const config: Config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",

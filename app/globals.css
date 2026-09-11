@@ -9,6 +9,10 @@
   body {
     @apply bg-paper text-ink;
   }
+  .dark body,
+  html.dark body {
+    @apply bg-[#0f1a12] text-paper;
+  }
   ::selection {
     @apply bg-harvest/30;
   }
@@ -122,22 +126,57 @@
      primary contact channel without being an animated GIF-style loop.
      Runs a fixed number of times rather than forever, so it settles once
      a visitor has noticed it. */
+  .whatsapp-pulse {
+    position: relative;
+    overflow: visible;
+  }
   .whatsapp-pulse::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: -4px;
+    z-index: -1;
     border-radius: 9999px;
-    background-color: theme("colors.harvest");
+    background-color: #25D366;
+    opacity: 0;
+    pointer-events: none;
     animation: whatsapp-ping 2.2s ease-out 1s 3;
   }
   @keyframes whatsapp-ping {
     0% {
       transform: scale(1);
-      opacity: 0.55;
+      opacity: 0.45;
     }
     100% {
-      transform: scale(1.6);
+      transform: scale(1.55);
       opacity: 0;
     }
   }
+}
+
+/* ── Dark mode surface helpers ───────────────────────── */
+.dark {
+  color-scheme: dark;
+}
+.dark .bg-paper { background-color: #16241a !important; }
+.dark .bg-parchment { background-color: #1a2e20 !important; }
+.dark .bg-parchment\/50 { background-color: rgba(26, 46, 32, 0.5) !important; }
+.dark .bg-parchment\/60 { background-color: rgba(26, 46, 32, 0.6) !important; }
+.dark .text-ink { color: #f3ecdd !important; }
+.dark .text-stone { color: #a8a090 !important; }
+.dark .text-clay { color: #e0a526 !important; }
+.dark .border-stone\/20,
+.dark .border-stone\/15,
+.dark .border-stone\/25,
+.dark .border-stone\/30 {
+  border-color: rgba(243, 236, 221, 0.12) !important;
+}
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #0f1a12 !important;
+  border-color: rgba(243, 236, 221, 0.2) !important;
+  color: #f3ecdd !important;
+}
+.dark .card-hover:hover {
+  border-color: rgba(224, 165, 38, 0.4) !important;
 }
