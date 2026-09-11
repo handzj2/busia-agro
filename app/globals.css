@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink;
+  }
+  ::selection {
+    @apply bg-harvest/30;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid theme("colors.harvest");
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@layer components {
+  /* A "field record" divider: a rule with a location/date pinned to it,
+     used throughout the site wherever content is genuinely a record of
+     something that happened on a date, in a place — not decoration. */
+  .record-rule {
+    @apply flex items-baseline gap-4 border-t border-stone/25 pt-3;
+  }
+
+  /* Subtle ploughed-field furrow texture — thin diagonal lines evoking
+     tilled rows. Used as a low-opacity background layer on the hero and
+     dark CTA sections so they read as "agro" rather than a flat color
+     block. Never used at full opacity; always layered under real content. */
+  .furrow-texture {
+    background-image: repeating-linear-gradient(
+      120deg,
+      rgba(0, 0, 0, 0.035) 0px,
+      rgba(0, 0, 0, 0.035) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  }
+  .furrow-texture-dark {
+    background-image: repeating-linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  }
+
+  /* Underline that grows in from the left on hover/focus — used on the
+     main nav links instead of a plain color change, so the primary
+     navigation feels responsive without any extra markup per link. */
+  .nav-link {
+    @apply relative text-paper/85 transition-colors hover:text-harvest;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 100%;
+    background-color: theme("colors.harvest");
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Lift-on-hover used for every card-shaped piece of content (products,
+     projects, services). One consistent physical response — never a
+     different effect per card type — so the interaction vocabulary stays
+     coherent across the site. */
+  .card-hover {
+    @apply transition-all duration-200 ease-out;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -12px rgba(22, 36, 26, 0.25);
+  }
+
+  /* One orchestrated entrance sequence for the hero on first load — not
+     repeated per-section on scroll, which is the generic AI-page tell. */
+  .hero-in {
+    animation: hero-fade-up 0.7s ease-out both;
+  }
+  .hero-in-delay-1 {
+    animation: hero-fade-up 0.7s ease-out 0.12s both;
+  }
+  .hero-in-delay-2 {
+    animation: hero-fade-up 0.7s ease-out 0.24s both;
+  }
+  .hero-in-delay-3 {
+    animation: hero-fade-up 0.7s ease-out 0.36s both;
+  }
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Gentle pulse ring behind the WhatsApp button — draws the eye to the
+     primary contact channel without being an animated GIF-style loop.
+     Runs a fixed number of times rather than forever, so it settles once
+     a visitor has noticed it. */
+  .whatsapp-pulse::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background-color: theme("colors.harvest");
+    animation: whatsapp-ping 2.2s ease-out 1s 3;
+  }
+  @keyframes whatsapp-ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+}
