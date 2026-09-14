@@ -1,0 +1,43 @@
+FEATURE REQUEST
+===============
+
+FEATURE ID
+
+FEAT-
+
+TITLE
+
+
+PROBLEM / OPPORTUNITY
+
+
+
+
+PROPOSED SOLUTION
+
+
+
+
+BUSINESS VALUE
+
+
+
+
+USER NEED
+
+
+
+
+SCOPE IMPACT
+
+
+
+
+ROADMAP FIT
+
+Which phase does this belong to?
+
+
+STATUS
+
+IDEA / UNDER REVIEW / APPROVED / REJECTED / DEFERRED

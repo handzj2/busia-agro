@@ -129,7 +129,7 @@ export default function HomePage() {
         <SectionHeading
           eyebrow="Track record"
           title="Featured project"
-          description="A sample of the funded and partner-led work we've delivered."
+          description="Partner and field work across the Eastern region — details added as records are confirmed."
         />
         <div className="mt-10">
           {featuredProjects.map((project) => (
@@ -152,7 +152,7 @@ export default function HomePage() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-paper/70">
             We work with NGOs, government programmes, and private partners to
-            deliver agricultural projects on the ground in the Central
+            deliver agricultural projects on the ground in the Eastern
             Region.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

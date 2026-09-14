@@ -1,0 +1,92 @@
+DEVELOPMENT TASK
+================
+
+TASK ID
+
+TASK-
+
+TITLE
+
+
+OBJECTIVE
+
+What exactly are we changing?
+
+
+WHY
+
+Why is this required?
+
+
+CURRENT BEHAVIOR
+
+What happens now?
+
+
+DESIRED BEHAVIOR
+
+What should happen?
+
+
+USER WORKFLOW
+
+
+
+
+BUSINESS RULES
+
+
+
+
+IN SCOPE
+
+
+
+
+OUT OF SCOPE
+
+
+
+
+RELEVANT FILES
+
+
+
+
+FILES THAT MUST NOT CHANGE
+
+
+
+
+API IMPACT
+
+None / Describe.
+
+
+DATABASE IMPACT
+
+None / Describe.
+
+
+UI IMPACT
+
+None / Describe.
+
+
+TEST REQUIREMENTS
+
+
+
+
+ACCEPTANCE CRITERIA
+
+[ ]
+
+[ ]
+
+[ ]
+
+
+STATUS
+
+IDEA / APPROVED / PLANNED / DEVELOPMENT / TESTING / AUDIT / COMPLETE

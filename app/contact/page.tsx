@@ -1,5 +1,6 @@
 import SectionHeading from "@/components/SectionHeading";
 import Button from "@/components/Button";
+import { MapPinIcon } from "@/components/Icons";
 import { company } from "@/content/company";
 
 export const metadata = { title: `Contact | ${company.name}` };
@@ -170,7 +171,10 @@ export default function ContactPage() {
         <div className="space-y-8">
           <div>
             <h2 className="font-serif text-xl text-ink">Visit us</h2>
-            <p className="mt-3 text-stone">📍 {company.address}</p>
+            <p className="mt-3 flex items-start gap-2 text-stone">
+              <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-clay" />
+              <span>{company.address}</span>
+            </p>
             <div className="mt-4 aspect-video w-full overflow-hidden rounded-sm border border-stone/20">
               <iframe
                 src={company.mapEmbedUrl}

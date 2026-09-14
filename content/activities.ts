@@ -1,53 +1,59 @@
 import { FieldActivity } from "@/lib/types";
 
-// PLACEHOLDER CONTENT — replace with 3–6 real, recent field activities
-// (with real photos) before launch. This is the section that proves the
-// company is active on the ground, so real content matters most here.
-//
-// NOTE: this section was designed for a company running farmer training
-// and field programmes. Confirm with the client whether Busia Agro Mbale
-// does anything like this (e.g. demo plots, farmer days at the shop) —
-// if not, this page/nav item can simply be removed from V1.
+// Field work is concentrated in the Eastern region.
+// Confirmed areas: Bududa, Manafwa, Busia, Butiru.
+// Client note: activities took place last year and once this year.
+// Replace titles/descriptions/photos with real records before launch.
 export const fieldActivities: FieldActivity[] = [
   {
-    slug: "farmer-training-masaka-2026-06",
-    title: "Farmer Training — Masaka",
-    date: "2026-06-14",
-    location: "Kyabakuza, Masaka District",
-    activityType: "Training",
+    slug: "field-support-bududa-2026",
+    title: "Field Support — Bududa",
+    date: "2026-03-15",
+    location: "Bududa District",
+    activityType: "Field Support",
     description:
-      "A one-day training session for 45 smallholder farmers on correct spacing, fertilizer application timing, and early pest identification for the first-season maize crop.",
-    results: "45 farmers trained; 12 follow-up farm visits scheduled for the following month.",
-    partners: ["Masaka District Farmers' Association"],
+      "On-ground support for farmers in Bududa — input guidance and follow-up on crop protection and fertilizer use in the Eastern highlands.",
+    results: "To be confirmed with field notes and photos.",
     media: [
-      { type: "image", src: "/images/activities/masaka-training-1.jpg", alt: "Farmers gathered for training session in Masaka" },
-      { type: "image", src: "/images/activities/masaka-training-2.jpg", alt: "Trainer demonstrating fertilizer application" }
+      {
+        type: "image",
+        src: "/images/activities/bududa-field-1.jpg",
+        alt: "Field activity in Bududa"
+      }
     ]
   },
   {
-    slug: "demonstration-farm-lwengo-2026-04",
-    title: "Demonstration Farm Field Day",
-    date: "2026-04-22",
-    location: "Lwengo District",
-    activityType: "Field Demonstration",
+    slug: "field-support-manafwa-2025",
+    title: "Field Support — Manafwa",
+    date: "2025-09-20",
+    location: "Manafwa District",
+    activityType: "Field Support",
     description:
-      "Field day at the company's demonstration plot comparing hybrid and local maize varieties under identical management conditions.",
-    results: "Hybrid plot yielded 38% more than the local-variety control plot.",
+      "Field visit and farmer support in Manafwa — practical advice on inputs and crop management for local growers.",
+    results: "To be confirmed with field notes and photos.",
     media: [
-      { type: "image", src: "/images/activities/lwengo-demo-1.jpg", alt: "Demonstration maize plot in Lwengo" }
+      {
+        type: "image",
+        src: "/images/activities/manafwa-field-1.jpg",
+        alt: "Field activity in Manafwa"
+      }
     ]
   },
   {
-    slug: "input-distribution-rakai-2026-03",
-    title: "Input Distribution Drive",
-    date: "2026-03-05",
-    location: "Rakai District",
-    activityType: "Distribution",
+    slug: "field-support-busia-butiru-2025",
+    title: "Field Support — Busia & Butiru",
+    date: "2025-06-10",
+    location: "Busia District / Butiru",
+    activityType: "Field Support",
     description:
-      "Distribution of subsidized seed and fertilizer packages to 120 registered farmer households ahead of the first planting season.",
-    results: "120 households received input packages.",
+      "Support visits covering Busia and Butiru — serving farmers with input supply guidance and advisory in the Eastern region.",
+    results: "To be confirmed with field notes and photos.",
     media: [
-      { type: "image", src: "/images/activities/rakai-distribution-1.jpg", alt: "Input packages being distributed in Rakai" }
+      {
+        type: "image",
+        src: "/images/activities/busia-butiru-field-1.jpg",
+        alt: "Field activity in Busia and Butiru"
+      }
     ]
   }
 ];

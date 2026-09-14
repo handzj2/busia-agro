@@ -4,6 +4,7 @@ import { fieldActivities } from "@/content/activities";
 import { company } from "@/content/company";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Button from "@/components/Button";
+import { CalendarIcon, MapPinIcon, UsersIcon } from "@/components/Icons";
 
 const sorted = [...fieldActivities].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -84,11 +85,20 @@ export default function FieldActivityDetailPage({
               <h1 className="mt-3 max-w-3xl font-serif text-3xl leading-tight md:text-4xl lg:text-5xl">
                 {activity.title}
               </h1>
-              <p className="mt-3 flex flex-wrap gap-4 text-sm text-paper/85">
-                <span>📅 {formatDate(activity.date)}</span>
-                <span>📍 {activity.location}</span>
+              <p className="mt-3 flex flex-wrap items-center gap-4 text-sm text-paper/85">
+                <span className="inline-flex items-center gap-1.5">
+                  <CalendarIcon className="h-4 w-4" />
+                  {formatDate(activity.date)}
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <MapPinIcon className="h-4 w-4" />
+                  {activity.location}
+                </span>
                 {activity.participants != null && (
-                  <span>👥 {activity.participants} participants</span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <UsersIcon className="h-4 w-4" />
+                    {activity.participants} participants
+                  </span>
                 )}
               </p>
             </div>

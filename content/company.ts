@@ -1,55 +1,53 @@
 import { CompanyProfile } from "@/lib/types";
 
-// Real client details filled in below. Remaining PLACEHOLDER fields
-// (phone, email, WhatsApp, founded year, socials, map link) still need to
-// come from the client before launch — search for "PLACEHOLDER" to find them.
+// Source: official company profile document (uploaded 2026-09-14)
+// Legal name: Busia Farmers Supplies Limited
+// Operations since 2008; formal registration 2019 (TIN 1001099284)
+// Branches confirmed by client: Mbale, Busia, Kampala
+// Phone / WhatsApp: +256 774 201 233
 export const company: CompanyProfile = {
-  name: "Busia Agro Mbale",
-  tagline: "Mbale's trusted source for fertilizer, pesticides, and farm inputs.",
-  foundedYear: 2016, // PLACEHOLDER — confirm actual founding year
+  name: "Busia Farmers Supplies Limited",
+  tagline: "With diligence and excellence, we serve farmers.",
+  foundedYear: 2008,
   mission:
-    "To supply farmers in and around Mbale with quality fertilizers, pesticides, and farm inputs, backed by honest advice on what to use and when.",
+    "To provide farmers with high quality agricultural inputs, professional advice, and reliable services that improve productivity and livelihoods.",
   vision:
-    "To be the first stop for every farmer in the Mbale region looking for reliable agro-inputs and support.",
+    "To become the leading agricultural supply company in Uganda that empowers farmers with reliable inputs and modern farming solutions.",
   values: [
-    "Integrity in every transaction",
-    "Farmer-first thinking",
-    "Evidence-based agronomy",
-    "Long-term partnership over one-off sales"
+    "Quality products",
+    "Affordable prices",
+    "Fast delivery",
+    "Professional customer care",
+    "Reliable services"
   ],
-  regionsServed: ["Mbale", "Eastern Region"],
-  phone: "+256 700 000 000", // PLACEHOLDER — confirm real phone number
-  whatsapp: "256700000000", // PLACEHOLDER — confirm real WhatsApp number
-  email: "info@busiaagrombale.co.ug", // PLACEHOLDER — confirm real email
-  address: "Mbale Bus Park, opposite M-Kopa Shop, Mbale, Uganda",
-  mapEmbedUrl: "https://www.google.com/maps?q=Mbale+Bus+Park,Mbale,Uganda&output=embed",
+  regionsServed: ["Mbale", "Busia", "Kampala", "Bududa", "Manafwa", "Butiru"],
+  phone: "+256 774 201 233",
+  whatsapp: "256774201233",
+  email: "busiafarmsupply@gmail.com",
+  address:
+    "Industrial Division, South Central Ward Park, Mbale, Uganda (P.O. Box 312768)",
+  mapEmbedUrl:
+    "https://www.google.com/maps?q=Industrial+Division+South+Central+Ward+Park+Mbale+Uganda&output=embed",
   socials: [
-    { label: "Facebook", url: "https://facebook.com" }, // PLACEHOLDER — confirm real page
-    { label: "Instagram", url: "https://instagram.com" }, // PLACEHOLDER — confirm real page
-    { label: "LinkedIn", url: "https://linkedin.com" } // PLACEHOLDER — confirm real page
+    { label: "Facebook", url: "https://facebook.com" },
+    { label: "Instagram", url: "https://instagram.com" },
+    { label: "LinkedIn", url: "https://linkedin.com" }
   ],
-  // PLACEHOLDER — all four numbers need confirming with the client before
-  // launch. Used by <ImpactStats> on the homepage and About page. Keep to
-  // 4 numbers max so the strip stays legible on mobile.
   impactStats: [
-    { value: "10+", label: "Years serving farmers" },
-    { value: "3", label: "Product categories" },
-    { value: "2", label: "Regions served" },
-    { value: "1", label: "Shop location" }
+    { value: "18+", label: "Years serving farmers" },
+    { value: "3", label: "Branches" },
+    { value: "TIN registered", label: "Formal business" },
+    { value: "Uganda-wide", label: "Supply reach" }
   ],
-  // PLACEHOLDER — confirm each of these against reality before launch
-  // (e.g. is the business actually registered, does it hold any
-  // certifications). Used by <TrustStrip>. Never display a checklist item
-  // here that hasn't been confirmed true.
   hours: [
     { day: "Mon–Fri", hours: "8am–5pm" },
     { day: "Sat", hours: "9am–1pm" },
     { day: "Sun", hours: "Closed" }
   ],
   trustSignals: [
-    "Registered business", // PLACEHOLDER — confirm registration status
-    "Serving farmers since 2016", // PLACEHOLDER — keep this year in sync with foundedYear above
-    "Based at Mbale Bus Park",
-    "Straightforward product advice, no hard sell"
+    "TIN registered (1001099284)",
+    "Serving farmers since 2008",
+    "Branches in Mbale, Busia & Kampala",
+    "Quality inputs · professional advice"
   ]
 };

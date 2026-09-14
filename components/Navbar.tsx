@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { company } from "@/content/company";
-import LeafIcon from "@/components/LeafIcon";
+import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
 
 // Grouped so the top-level nav stays at 5 items on desktop and doesn't
@@ -42,9 +42,20 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-field text-paper">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 font-serif text-xl tracking-tight">
-          <LeafIcon className="h-6 w-6 text-harvest" />
-          {company.name}
+        <Link href="/" className="flex items-center gap-3 shrink-0">
+          <span className="flex items-center rounded-sm bg-paper px-2 py-1.5 shadow-sm">
+            <Image
+              src="/images/logo-nav.png"
+              alt={company.name}
+              width={112}
+              height={102}
+              className="h-12 w-auto object-contain sm:h-14"
+              priority
+            />
+          </span>
+          <span className="hidden max-w-[11rem] font-serif text-sm leading-tight tracking-tight lg:inline xl:max-w-none xl:text-base">
+            {company.name}
+          </span>
         </Link>
 
         {/* Desktop nav — dropdowns are pure CSS (group-hover/focus-within),
@@ -87,6 +98,12 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
+          <Link
+            href="/login"
+            className="hidden rounded-sm border border-paper/40 px-4 py-2 text-sm text-paper/90 transition-all duration-200 hover:border-harvest hover:text-harvest md:inline-block"
+          >
+            Login
+          </Link>
           <Link
             href="/contact"
             className="hidden rounded-sm border border-harvest px-4 py-2 text-sm text-harvest transition-all duration-200 hover:bg-harvest hover:text-ink hover:shadow-md md:inline-block"
@@ -163,7 +180,14 @@ export default function Navbar() {
                     ]
               )}
             </nav>
-            <div className="p-4">
+            <div className="space-y-3 p-4">
+              <Link
+                href="/login"
+                onClick={() => setDrawerOpen(false)}
+                className="flex min-h-[44px] items-center justify-center rounded-sm border border-paper/40 px-6 py-3 text-sm text-paper"
+              >
+                Login (demo)
+              </Link>
               <a
                 href={`https://wa.me/${company.whatsapp}`}
                 target="_blank"

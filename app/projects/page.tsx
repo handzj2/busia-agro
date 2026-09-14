@@ -11,12 +11,18 @@ export default function ProjectsPage() {
       <SectionHeading
         eyebrow="Track record"
         title="Projects"
-        description="Funded and partner-led work we've implemented, for reference in tenders, partnership discussions, and funding applications."
+        description="Eastern region field and partner work (Bududa, Manafwa, Busia, Butiru and surrounding areas). Detailed project records will be published here as they are confirmed."
       />
       <div className="mt-12 grid gap-8 md:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+        {projects.length === 0 ? (
+          <p className="text-stone md:col-span-2">
+            No project write-ups published yet. Contact us for current work in the Eastern region.
+          </p>
+        ) : (
+          projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))
+        )}
       </div>
       {/* V2 note: add a "Download Company Profile" button here once that
           PDF exists — funders reading this page are the most likely

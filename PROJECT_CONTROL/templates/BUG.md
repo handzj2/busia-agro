@@ -1,0 +1,45 @@
+BUG REPORT
+==========
+
+BUG ID
+
+BUG-
+
+TITLE
+
+
+SEVERITY
+
+Critical / High / Medium / Low
+
+
+CURRENT BEHAVIOR
+
+
+
+
+EXPECTED BEHAVIOR
+
+
+
+
+STEPS TO REPRODUCE
+
+1.
+2.
+3.
+
+
+RELEVANT FILES
+
+
+
+
+ENVIRONMENT
+
+
+
+
+STATUS
+
+OPEN / INVESTIGATING / FIXED / VERIFIED

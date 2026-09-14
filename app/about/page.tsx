@@ -3,11 +3,10 @@ import SectionHeading from "@/components/SectionHeading";
 import ImpactStats from "@/components/ImpactStats";
 import TrustStrip from "@/components/TrustStrip";
 import Button from "@/components/Button";
+import { MissionIcon, VisionIcon } from "@/components/Icons";
 import { company } from "@/content/company";
 
 export const metadata = { title: `About Us | ${company.name}` };
-
-const valueIcons = ["Integrity", "Quality", "Community", "Growth"];
 
 export default function AboutPage() {
   return (
@@ -47,7 +46,7 @@ export default function AboutPage() {
             <p className="mt-4 leading-relaxed text-stone">{company.mission}</p>
             <p className="mt-4 leading-relaxed text-stone">
               Based at {company.address}, we serve farmers across{" "}
-              {company.regionsServed.join(" and ")} with quality inputs and
+              {company.regionsServed.join(", ")} with quality inputs and
               straightforward advice.
             </p>
             <div className="mt-6">
@@ -63,16 +62,12 @@ export default function AboutPage() {
       <section className="bg-parchment/50">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 py-14 md:grid-cols-2">
           <div className="rounded-sm border border-stone/20 bg-paper p-8">
-            <p className="text-2xl" aria-hidden>
-              🎯
-            </p>
+            <MissionIcon className="h-7 w-7 text-harvest" />
             <h2 className="mt-3 font-serif text-xl text-ink">Our Mission</h2>
             <p className="mt-3 text-stone">{company.mission}</p>
           </div>
           <div className="rounded-sm border border-stone/20 bg-paper p-8">
-            <p className="text-2xl" aria-hidden>
-              👁️
-            </p>
+            <VisionIcon className="h-7 w-7 text-harvest" />
             <h2 className="mt-3 font-serif text-xl text-ink">Our Vision</h2>
             <p className="mt-3 text-stone">{company.vision}</p>
           </div>
@@ -82,16 +77,13 @@ export default function AboutPage() {
       {/* Core values grid */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <SectionHeading eyebrow="Values" title="What we stand for" />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {company.values.map((value, i) => (
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {company.values.map((value) => (
             <div
               key={value}
               className="rounded-sm border border-stone/20 bg-paper p-6 text-center"
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-harvest">
-                {valueIcons[i] || "Value"}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-stone">{value}</p>
+              <p className="font-serif text-lg text-ink">{value}</p>
             </div>
           ))}
         </div>
