@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   description: company.mission,
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://busia-agro.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://busia-farmers-supplies.vercel.app"
   ),
   icons: {
     icon: [

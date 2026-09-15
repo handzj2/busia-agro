@@ -7,11 +7,11 @@ You already have **GitHub Desktop**. Follow these steps once; after that, every 
 ## 1. Put the project on GitHub
 
 1. Open **GitHub Desktop**.
-2. **File → Add Local Repository** → choose the `agro-website` folder  
+2. **File → Add Local Repository** → choose the `busia-farmers-supplies` folder  
    (if it says “not a git repository”, click **create a repository**).
-3. Commit message: `Initial V1 agro website` → **Commit to main**.
+3. Commit message: `Initial V1 Busia Farmers Supplies website` → **Commit to main**.
 4. **Publish repository** (top bar)  
-   - Name: e.g. `agro-website`  
+   - Name: e.g. `busia-farmers-supplies`  
    - Keep it **Private** if you prefer  
    - Publish.
 
@@ -23,10 +23,10 @@ You should see the repo on github.com under your account.
 
 1. Go to [vercel.com](https://vercel.com) and sign in with **GitHub** (same account).
 2. **Add New… → Project**.
-3. Import the `agro-website` repository.
+3. Import the `busia-farmers-supplies` repository.
 4. Settings on the import screen:
    - **Framework Preset:** Next.js (auto)
-   - **Root Directory:** leave blank (or `agro-website` only if the repo root is a parent folder)
+   - **Root Directory:** leave blank (or `busia-farmers-supplies` only if the repo root is a parent folder)
    - **Build Command:** `next build` (default)
    - **Install Command:** `npm install` (default)
 5. **Environment Variables** — click to add **before** first deploy:
@@ -40,7 +40,7 @@ You should see the repo on github.com under your account.
 
 Wait 1–2 minutes. Vercel gives you a URL like:
 
-`https://agro-website-xxxx.vercel.app`
+`https://busia-farmers-supplies-xxxx.vercel.app`
 
 Open it in the browser — that is your live test site.
 
@@ -60,10 +60,10 @@ Pull requests / other branches get their **own Preview URLs** — useful to show
 
 ## 4. After first deploy (optional but recommended)
 
-1. Copy the live URL (e.g. `https://agro-website-xxxx.vercel.app`).
+1. Copy the live URL (e.g. `https://busia-farmers-supplies-xxxx.vercel.app`).
 2. Vercel → Project → **Settings → Environment Variables**.
 3. Set:
-   - `NEXT_PUBLIC_SITE_URL` = `https://agro-website-xxxx.vercel.app`
+   - `NEXT_PUBLIC_SITE_URL` = `https://busia-farmers-supplies-xxxx.vercel.app`
 4. **Deployments → … on latest → Redeploy** (so metadata uses the real URL).
 
 When you have a real domain later, change `NEXT_PUBLIC_SITE_URL` to that domain and redeploy.

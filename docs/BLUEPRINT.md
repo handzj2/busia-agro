@@ -1,4 +1,4 @@
-# Agro Company Website — Master Blueprint
+# Busia Farmers Supplies Limited — Master Blueprint
 
 This is the full product blueprint the site is designed against. **Only
 V1 is built right now.** V2 and V3 are documented here so every V1

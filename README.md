@@ -1,4 +1,4 @@
-# Agro Company Website — V1
+# Busia Farmers Supplies Limited — Website V1
 
 A static Next.js + TypeScript + Tailwind CSS site for an agricultural
 company, built to scale into a full CMS/admin platform (V2) and a

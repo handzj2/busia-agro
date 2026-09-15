@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-// Design tokens for the agro-company site.
+// Design tokens for Busia Farmers Supplies Limited.
 // See docs/DESIGN.md for the rationale behind these choices.
 const config: Config = {
   darkMode: "class",
