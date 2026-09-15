@@ -44,12 +44,22 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <span className="flex items-center rounded-sm bg-paper px-2 py-1.5 shadow-sm">
+            {/* Light mode: dark-text logo */}
             <Image
-              src="/images/logo-nav.png"
+              src="/images/logo-nav-light.png"
               alt={company.name}
               width={112}
               height={102}
-              className="h-12 w-auto object-contain sm:h-14"
+              className="h-12 w-auto object-contain sm:h-14 dark:hidden"
+              priority
+            />
+            {/* Dark mode: white-text logo */}
+            <Image
+              src="/images/logo-nav-dark.png"
+              alt={company.name}
+              width={112}
+              height={102}
+              className="hidden h-12 w-auto object-contain sm:h-14 dark:block"
               priority
             />
           </span>

@@ -36,11 +36,18 @@ export default function MockLoginPage() {
           <div className="mb-8 flex flex-col items-center text-center">
             <span className="mb-4 flex items-center rounded-sm bg-paper px-2 py-1">
               <Image
-                src="/images/logo-nav.png"
+                src="/images/logo-nav-light.png"
                 alt={company.name}
                 width={100}
                 height={90}
-                className="h-16 w-auto object-contain"
+                className="h-16 w-auto object-contain dark:hidden"
+              />
+              <Image
+                src="/images/logo-nav-dark.png"
+                alt={company.name}
+                width={100}
+                height={90}
+                className="hidden h-16 w-auto object-contain dark:block"
               />
             </span>
             <h1 className="font-serif text-2xl text-ink">Staff sign in</h1>
