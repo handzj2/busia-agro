@@ -13,9 +13,14 @@ export const metadata: Metadata = {
   }
 };
 
+/**
+ * Full-viewport maintenance page.
+ * When SITE_STATUS=OFF the middleware rewrites all routes here.
+ * The page is position:fixed so it covers Navbar/Footer cleanly.
+ */
 export default function MaintenancePage() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-paper px-6 py-16">
+    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto bg-paper px-6 py-16">
       {/* Subtle field texture */}
       <div
         className="pointer-events-none absolute inset-0 furrow-texture opacity-60"
@@ -69,13 +74,13 @@ export default function MaintenancePage() {
         </div>
 
         {/* Contact cards */}
-        <div className="mt-10 grid gap-3 sm:grid-cols-1">
+        <div className="mt-10 grid gap-3">
           {company.phone && (
             <a
               href={`tel:${company.phone.replace(/\s/g, "")}`}
               className="group flex items-center justify-center gap-3 rounded-xl border border-stone/15 bg-white px-5 py-3.5 text-sm font-medium text-ink shadow-sm transition hover:border-harvest/40 hover:bg-parchment/50"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
                 <PhoneIcon />
               </span>
               <span className="text-left">
@@ -94,7 +99,7 @@ export default function MaintenancePage() {
               rel="noopener noreferrer"
               className="group flex items-center justify-center gap-3 rounded-xl border border-stone/15 bg-white px-5 py-3.5 text-sm font-medium text-ink shadow-sm transition hover:border-harvest/40 hover:bg-parchment/50"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
                 <WhatsAppIcon />
               </span>
               <span className="text-left">
@@ -111,7 +116,7 @@ export default function MaintenancePage() {
               href={`mailto:${company.email}`}
               className="group flex items-center justify-center gap-3 rounded-xl border border-stone/15 bg-white px-5 py-3.5 text-sm font-medium text-ink shadow-sm transition hover:border-harvest/40 hover:bg-parchment/50"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
                 <MailIcon />
               </span>
               <span className="text-left">
