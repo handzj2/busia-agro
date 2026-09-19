@@ -3,20 +3,34 @@ import { company } from "@/content/company";
 import LeafIcon from "@/components/LeafIcon";
 
 /**
- * Professional offline / maintenance screen.
- * Used by root layout when SITE_STATUS=OFF.
+ * ─────────────────────────────────────────────────────────────
+ * MAINTENANCE / OFFLINE SCREEN
+ * ─────────────────────────────────────────────────────────────
+ * Added: 2026-09-19
+ *
+ * Shown when SITE_STATUS=OFF (set in Vercel Environment Variables).
+ * Full-viewport overlay so the normal site chrome is fully covered.
+ *
+ * Design matches the Busia Farmers Supplies brand (field green,
+ * harvest gold, parchment paper, Fraunces + Work Sans).
+ *
+ * To restore the live site: set SITE_STATUS=ON and Redeploy.
+ * ─────────────────────────────────────────────────────────────
  */
 export default function MaintenanceScreen() {
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto bg-paper px-6 py-16">
+      {/* Brand texture (same as main site hero sections) */}
       <div
         className="pointer-events-none absolute inset-0 furrow-texture opacity-60"
         aria-hidden="true"
       />
 
+      {/* Top accent bar — field → harvest → field */}
       <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-field via-harvest to-field" />
 
       <div className="relative z-10 mx-auto w-full max-w-lg text-center">
+        {/* Logo card */}
         <div className="mb-8 flex justify-center">
           <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-stone/10">
             <Image
@@ -30,6 +44,7 @@ export default function MaintenanceScreen() {
           </div>
         </div>
 
+        {/* Official notice label */}
         <div className="mb-2 flex items-center justify-center gap-2 text-field">
           <LeafIcon className="h-5 w-5" />
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-field">
@@ -42,6 +57,7 @@ export default function MaintenanceScreen() {
           {company.name}
         </h1>
 
+        {/* Message card */}
         <div className="mx-auto mt-6 max-w-sm">
           <div className="rounded-2xl border border-stone/15 bg-white/80 px-8 py-8 shadow-sm backdrop-blur-sm">
             <p className="font-serif text-xl text-ink">
@@ -57,6 +73,7 @@ export default function MaintenanceScreen() {
           </div>
         </div>
 
+        {/* Contact actions */}
         <div className="mt-10 grid gap-3">
           {company.phone && (
             <a

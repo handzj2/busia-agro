@@ -53,14 +53,29 @@ const themeInitScript = `
 })();
 `;
 
+/**
+ * ─────────────────────────────────────────────────────────────
+ * MAINTENANCE MODE (SITE_STATUS)
+ * ─────────────────────────────────────────────────────────────
+ * Added: 2026-09-19 — controlled site suspension for client payment /
+ * service hold. Does NOT delete the project, domain, GitHub code,
+ * or deployment history.
+ *
+ * Toggle in Vercel → Project → Settings → Environment Variables:
+ *   SITE_STATUS = OFF  → show offline / maintenance screen
+ *   SITE_STATUS = ON   → normal website (default if unset)
+ *
+ * After changing the variable, Redeploy production.
+ * See DEPLOY.md → "Site suspension / maintenance mode".
+ * ─────────────────────────────────────────────────────────────
+ */
 export default function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
-  // SITE_STATUS=OFF → overlay the maintenance screen on top of the normal tree.
-  // We always render {children} so Next.js can collect page data during build
-  // (this fixes the Vercel "/_not-found" build error when SITE_STATUS is OFF).
+  // [MAINTENANCE] Read the suspension switch. Default ON so a missing
+  // env var never accidentally takes the site offline.
   const siteOff =
     (process.env.SITE_STATUS || "ON").toUpperCase().trim() === "OFF";
 
@@ -74,6 +89,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="font-sans antialiased transition-colors duration-200">
+        {/* [MAINTENANCE] When OFF: full-screen offline page only */}
         {siteOff ? (
           <MaintenanceScreen />
         ) : (
@@ -85,8 +101,10 @@ export default function RootLayout({
           </>
         )}
         {/*
-          Always include children in the React tree for static generation.
-          When site is OFF they are hidden; when ON they are already shown above.
+          [MAINTENANCE] Always keep {children} in the React tree (hidden)
+          so Next.js can collect page data during `next build` on Vercel.
+          Without this, SITE_STATUS=OFF caused:
+          "Failed to collect page data for /_not-found"
         */}
         {siteOff && <div className="hidden">{children}</div>}
       </body>
