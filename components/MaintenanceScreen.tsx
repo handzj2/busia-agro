@@ -8,138 +8,294 @@ import LeafIcon from "@/components/LeafIcon";
  * ─────────────────────────────────────────────────────────────
  * Added: 2026-09-19
  *
- * Shown when SITE_STATUS=OFF (set in Vercel Environment Variables).
- * Directs visitors to the hosting administrator (Handzj Tech).
- * To restore the live site: set SITE_STATUS=ON and Redeploy.
+ * - No client CTAs
+ * - Hosting admin only: Handzj Tech
+ * - All colors via inline styles so the page stays bright and
+ *   readable even when the site/browser is in dark mode
  * ─────────────────────────────────────────────────────────────
  */
 
-// Hosting administrator contact (Handzj Tech)
 const HOSTING_ADMIN = {
   name: "Handzj Tech",
   email: "handzj2@gmail.com",
   phone: "0781909507",
-  phoneHref: "tel:+256781909507", // Uganda format
+  phoneHref: "tel:+256781909507",
   whatsapp: "256781909507"
+};
+
+/* Hard-coded palette — never flipped by dark mode */
+const C = {
+  bg: "#FCFAF4",
+  card: "#FFFFFF",
+  ink: "#16241A",
+  muted: "#5C5646",
+  field: "#1F4D2B",
+  harvest: "#E0A526",
+  border: "rgba(22, 36, 26, 0.12)",
+  iconBg: "rgba(31, 77, 43, 0.12)",
+  shadow: "0 4px 24px rgba(0, 0, 0, 0.08)"
 };
 
 export default function MaintenanceScreen() {
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto bg-paper px-6 py-16">
-      {/* Brand texture */}
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 100,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        overflowY: "auto",
+        padding: "4rem 1.5rem",
+        backgroundColor: C.bg,
+        color: C.ink,
+        /* Prevent dark-mode inheritance */
+        colorScheme: "light"
+      }}
+    >
+      {/* Top accent bar */}
       <div
-        className="pointer-events-none absolute inset-0 furrow-texture opacity-60"
-        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "6px",
+          background: `linear-gradient(to right, ${C.field}, ${C.harvest}, ${C.field})`
+        }}
       />
 
-      {/* Top accent bar */}
-      <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-field via-harvest to-field" />
-
-      <div className="relative z-10 mx-auto w-full max-w-lg text-center">
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+          width: "100%",
+          maxWidth: "28rem",
+          textAlign: "center"
+        }}
+      >
         {/* Logo */}
-        <div className="mb-8 flex justify-center">
-          <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-stone/10">
+        <div style={{ marginBottom: "2rem", display: "flex", justifyContent: "center" }}>
+          <div
+            style={{
+              borderRadius: "1rem",
+              padding: "1rem",
+              backgroundColor: C.card,
+              border: `1px solid ${C.border}`,
+              boxShadow: C.shadow
+            }}
+          >
             <Image
               src="/images/logo.png"
               alt={company.name}
               width={140}
               height={70}
-              className="h-auto w-36 object-contain"
+              style={{ height: "auto", width: "9rem", objectFit: "contain" }}
               priority
             />
           </div>
         </div>
 
-        {/* Official notice */}
-        <div className="mb-2 flex items-center justify-center gap-2 text-field">
+        {/* Label */}
+        <div
+          style={{
+            marginBottom: "0.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.5rem",
+            color: C.field
+          }}
+        >
           <LeafIcon className="h-5 w-5" />
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-field">
+          <span
+            style={{
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.2em",
+              color: C.field
+            }}
+          >
             Official notice
           </span>
           <LeafIcon className="h-5 w-5" />
         </div>
 
-        <h1 className="font-serif text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
+        <h1
+          style={{
+            fontFamily: "var(--font-fraunces), Georgia, serif",
+            fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+            fontWeight: 500,
+            lineHeight: 1.25,
+            letterSpacing: "-0.02em",
+            color: C.ink,
+            margin: 0
+          }}
+        >
           {company.name}
         </h1>
 
         {/* Message card */}
-        <div className="mx-auto mt-6 max-w-sm">
-          <div className="rounded-2xl border border-stone/15 bg-white/80 px-8 py-8 shadow-sm backdrop-blur-sm">
-            <p className="font-serif text-xl text-ink">
+        <div style={{ margin: "1.5rem auto 0", maxWidth: "24rem" }}>
+          <div
+            style={{
+              borderRadius: "1rem",
+              padding: "2rem",
+              backgroundColor: C.card,
+              border: `1px solid ${C.border}`,
+              boxShadow: C.shadow
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-fraunces), Georgia, serif",
+                fontSize: "1.25rem",
+                fontWeight: 500,
+                color: C.ink,
+                margin: 0
+              }}
+            >
               Website temporarily unavailable
             </p>
-            <p className="mt-3 text-[15px] leading-relaxed text-stone">
+            <p
+              style={{
+                marginTop: "0.75rem",
+                fontSize: "0.95rem",
+                lineHeight: 1.6,
+                color: C.muted
+              }}
+            >
               This website is currently offline.
             </p>
-            <p className="mt-4 text-[15px] font-medium leading-relaxed text-ink">
+            <p
+              style={{
+                marginTop: "1rem",
+                fontSize: "0.95rem",
+                fontWeight: 600,
+                lineHeight: 1.6,
+                color: C.ink
+              }}
+            >
               Please contact the hosting administrator for assistance.
             </p>
           </div>
         </div>
 
-        {/* Hosting admin contacts */}
-        <div className="mt-10 grid gap-3">
-          <p className="text-xs font-medium uppercase tracking-wider text-stone">
-            {HOSTING_ADMIN.name}
+        {/* Hosting admin contacts only */}
+        <div
+          style={{
+            marginTop: "2.5rem",
+            display: "grid",
+            gap: "0.75rem"
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.7rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: C.muted,
+              margin: 0
+            }}
+          >
+            Hosting administrator · {HOSTING_ADMIN.name}
           </p>
 
-          <a
+          <ContactRow
             href={HOSTING_ADMIN.phoneHref}
-            className="group flex items-center justify-center gap-3 rounded-xl border border-stone/15 bg-white px-5 py-3.5 text-sm font-medium text-ink shadow-sm transition hover:border-harvest/40 hover:bg-parchment/50"
-          >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
-              <PhoneIcon />
-            </span>
-            <span className="text-left">
-              <span className="block text-[11px] font-normal uppercase tracking-wider text-stone">
-                Call
-              </span>
-              {HOSTING_ADMIN.phone}
-            </span>
-          </a>
-
-          <a
+            label="Call"
+            value={HOSTING_ADMIN.phone}
+            icon={<PhoneIcon />}
+          />
+          <ContactRow
             href={`https://wa.me/${HOSTING_ADMIN.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-3 rounded-xl border border-stone/15 bg-white px-5 py-3.5 text-sm font-medium text-ink shadow-sm transition hover:border-harvest/40 hover:bg-parchment/50"
-          >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
-              <WhatsAppIcon />
-            </span>
-            <span className="text-left">
-              <span className="block text-[11px] font-normal uppercase tracking-wider text-stone">
-                WhatsApp
-              </span>
-              {HOSTING_ADMIN.phone}
-            </span>
-          </a>
-
-          <a
+            label="WhatsApp"
+            value={HOSTING_ADMIN.phone}
+            icon={<WhatsAppIcon />}
+            external
+          />
+          <ContactRow
             href={`mailto:${HOSTING_ADMIN.email}`}
-            className="group flex items-center justify-center gap-3 rounded-xl border border-stone/15 bg-white px-5 py-3.5 text-sm font-medium text-ink shadow-sm transition hover:border-harvest/40 hover:bg-parchment/50"
-          >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-field/10 text-field transition group-hover:bg-harvest/15 group-hover:text-harvest">
-              <MailIcon />
-            </span>
-            <span className="text-left">
-              <span className="block text-[11px] font-normal uppercase tracking-wider text-stone">
-                Email
-              </span>
-              {HOSTING_ADMIN.email}
-            </span>
-          </a>
+            label="Email"
+            value={HOSTING_ADMIN.email}
+            icon={<MailIcon />}
+          />
         </div>
-
-        <p className="mt-12 text-xs tracking-wide text-stone/55">
-          {company.tagline}
-        </p>
-        <p className="mt-1 text-[11px] text-stone/40">
-          Serving farmers since {company.foundedYear}
-        </p>
       </div>
     </div>
+  );
+}
+
+function ContactRow({
+  href,
+  label,
+  value,
+  icon,
+  external
+}: {
+  href: string;
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+  external?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "0.75rem",
+        borderRadius: "0.75rem",
+        padding: "0.9rem 1.25rem",
+        fontSize: "0.9rem",
+        fontWeight: 600,
+        textDecoration: "none",
+        backgroundColor: C.card,
+        border: `1px solid ${C.border}`,
+        color: C.ink,
+        boxShadow: "0 1px 4px rgba(0,0,0,0.06)"
+      }}
+    >
+      <span
+        style={{
+          display: "flex",
+          width: "2.25rem",
+          height: "2.25rem",
+          flexShrink: 0,
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "9999px",
+          backgroundColor: C.iconBg,
+          color: C.field
+        }}
+      >
+        {icon}
+      </span>
+      <span style={{ textAlign: "left" }}>
+        <span
+          style={{
+            display: "block",
+            fontSize: "0.65rem",
+            fontWeight: 500,
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: C.muted
+          }}
+        >
+          {label}
+        </span>
+        {value}
+      </span>
+    </a>
   );
 }
 
