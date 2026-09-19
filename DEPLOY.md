@@ -99,3 +99,38 @@ Until this is set, the contact form shows a reminder and will not deliver messag
 - `.gitignore` — ignores `.env*`, `.vercel`, `node_modules`, `.next`
 
 You do **not** need the Vercel CLI if you use GitHub Desktop + the Vercel dashboard.
+
+---
+
+## Site suspension / maintenance mode
+
+The project includes a reversible **SITE_STATUS** switch.
+
+| Value | Behaviour |
+|-------|-----------|
+| `ON` (default) | Normal website |
+| `OFF` (or any other value) | Every visitor is redirected to a clean maintenance page |
+
+### How to put the live site into maintenance mode
+
+1. Vercel dashboard → your project → **Settings → Environment Variables**
+2. Add (or edit) `SITE_STATUS` = `OFF`
+3. Apply to **Production** (and Preview if you want)
+4. Go to **Deployments** → open the latest production deployment → **⋯ → Redeploy**
+
+Visitors will now see:
+
+> **Busia Farmers Supplies Limited**  
+> Website temporarily unavailable.  
+> Please contact us for assistance.
+
+Contact phone, email and WhatsApp remain visible on the maintenance page.
+
+### How to restore the site
+
+1. Change `SITE_STATUS` back to `ON`
+2. Redeploy
+
+Nothing is deleted — Vercel project, domain, GitHub code, deployment history and any future database stay intact.
+
+You can also set `SITE_STATUS=OFF` in `.env.local` to test the maintenance page locally (`npm run dev`).

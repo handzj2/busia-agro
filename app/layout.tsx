@@ -57,6 +57,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // When SITE_STATUS is OFF the middleware redirects everything to
+  // /maintenance. In that mode we deliberately omit the normal site chrome
+  // (Navbar, Footer, WhatsApp button) so the maintenance page is clean.
+  const siteOn =
+    (process.env.SITE_STATUS || "ON").toUpperCase().trim() === "ON";
+
   return (
     <html
       lang="en"
@@ -67,10 +73,16 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="font-sans antialiased transition-colors duration-200">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        {siteOn ? (
+          <>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <WhatsAppButton />
+          </>
+        ) : (
+          children
+        )}
       </body>
     </html>
   );
