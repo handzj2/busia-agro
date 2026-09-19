@@ -8,7 +8,7 @@ import LeafIcon from "@/components/LeafIcon";
  */
 export default function MaintenanceScreen() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-paper px-6 py-16">
+    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-y-auto bg-paper px-6 py-16">
       <div
         className="pointer-events-none absolute inset-0 furrow-texture opacity-60"
         aria-hidden="true"

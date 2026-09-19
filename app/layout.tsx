@@ -58,27 +58,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // SITE_STATUS=OFF → show only the maintenance screen
-  // SITE_STATUS=ON  (or unset) → normal website
+  // SITE_STATUS=OFF → overlay the maintenance screen on top of the normal tree.
+  // We always render {children} so Next.js can collect page data during build
+  // (this fixes the Vercel "/_not-found" build error when SITE_STATUS is OFF).
   const siteOff =
     (process.env.SITE_STATUS || "ON").toUpperCase().trim() === "OFF";
-
-  if (siteOff) {
-    return (
-      <html
-        lang="en"
-        className={`${fraunces.variable} ${workSans.variable}`}
-        suppressHydrationWarning
-      >
-        <head>
-          <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        </head>
-        <body className="font-sans antialiased">
-          <MaintenanceScreen />
-        </body>
-      </html>
-    );
-  }
 
   return (
     <html
@@ -90,10 +74,21 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="font-sans antialiased transition-colors duration-200">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        {siteOff ? (
+          <MaintenanceScreen />
+        ) : (
+          <>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <WhatsAppButton />
+          </>
+        )}
+        {/*
+          Always include children in the React tree for static generation.
+          When site is OFF they are hidden; when ON they are already shown above.
+        */}
+        {siteOff && <div className="hidden">{children}</div>}
       </body>
     </html>
   );
