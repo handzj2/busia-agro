@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MaintenanceScreen from "@/components/MaintenanceScreen";
 import { company } from "@/content/company";
 
 const fraunces = Fraunces({
@@ -57,6 +58,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // SITE_STATUS=OFF → show only the maintenance screen
+  // SITE_STATUS=ON  (or unset) → normal website
+  const siteOff =
+    (process.env.SITE_STATUS || "ON").toUpperCase().trim() === "OFF";
+
+  if (siteOff) {
+    return (
+      <html
+        lang="en"
+        className={`${fraunces.variable} ${workSans.variable}`}
+        suppressHydrationWarning
+      >
+        <head>
+          <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        </head>
+        <body className="font-sans antialiased">
+          <MaintenanceScreen />
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html
       lang="en"
