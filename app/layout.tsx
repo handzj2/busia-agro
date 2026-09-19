@@ -20,15 +20,25 @@ const workSans = Work_Sans({
   weight: ["400", "500", "600"]
 });
 
+// Safe metadataBase — empty/invalid NEXT_PUBLIC_SITE_URL must not break the build
+function getMetadataBase(): URL {
+  const fallback = "https://busia-farmers-supplies.vercel.app";
+  const raw = (process.env.NEXT_PUBLIC_SITE_URL || "").trim();
+  if (!raw) return new URL(fallback);
+  try {
+    return new URL(raw);
+  } catch {
+    return new URL(fallback);
+  }
+}
+
 export const metadata: Metadata = {
   title: {
     default: `${company.name} | ${company.tagline}`,
     template: `%s | ${company.name}`
   },
   description: company.mission,
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://busia-farmers-supplies.vercel.app"
-  ),
+  metadataBase: getMetadataBase(),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
