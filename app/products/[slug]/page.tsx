@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { productCategories } from "@/content/products";
 import { company } from "@/content/company";
@@ -40,7 +41,18 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       </Link>
 
       <div className="mt-8 grid gap-10 md:grid-cols-2">
-        <div className="aspect-[4/3] overflow-hidden rounded-sm bg-parchment" />
+        <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-parchment">
+          {product.image && (
+            <Image
+              src={product.image}
+              alt={product.imageAlt || product.name}
+              fill
+              priority
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          )}
+        </div>
         <div>
           <p className="text-sm text-clay">{product.category.name}</p>
           <h1 className="mt-2 font-serif text-3xl text-ink md:text-4xl">{product.name}</h1>
@@ -79,7 +91,17 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                 href={`/products/${item.slug}`}
                 className="card-hover block border border-stone/20 bg-paper p-4 hover:border-harvest/50"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-parchment" />
+                <div className="relative aspect-[3/4] overflow-hidden bg-parchment">
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt || item.name}
+                      fill
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                      className="object-cover"
+                    />
+                  )}
+                </div>
                 <p className="mt-3 font-serif text-ink">{item.name}</p>
               </Link>
             ))}

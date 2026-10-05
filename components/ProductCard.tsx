@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/lib/types";
 import { company } from "@/content/company";
 import Badge from "@/components/Badge";
@@ -36,13 +37,23 @@ export default function ProductCard({
     <article className="card-hover group flex flex-col border border-stone/20 bg-paper hover:border-harvest/50">
       <Link
         href={`/products/${product.slug}`}
-        className="block aspect-[4/3] overflow-hidden bg-parchment"
+        className="relative block aspect-[3/4] overflow-hidden bg-parchment"
       >
-        <div
-          className="h-full w-full bg-parchment transition-transform duration-300 ease-out group-hover:scale-105"
-          role="img"
-          aria-label={product.imageAlt || product.name}
-        />
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.imageAlt || product.name}
+            fill
+            sizes="(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <div
+            className="h-full w-full bg-parchment"
+            role="img"
+            aria-label={product.imageAlt || product.name}
+          />
+        )}
       </Link>
       <div className="flex flex-1 flex-col p-5">
         {categoryName && (
