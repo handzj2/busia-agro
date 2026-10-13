@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-  "https://www.busiafamerssuupplies.com";
+import { absoluteUrl, getSiteOrigin } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
+  const origin = getSiteOrigin();
+
   return {
     rules: [
       {
@@ -13,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/login", "/maintenance", "/api/"]
       }
     ],
-    sitemap: `${SITE_URL.replace(/\/$/, "")}/sitemap.xml`,
-    host: SITE_URL.replace(/\/$/, "")
+    sitemap: absoluteUrl("/sitemap.xml"),
+    host: origin.replace(/^https?:\/\//, "")
   };
 }

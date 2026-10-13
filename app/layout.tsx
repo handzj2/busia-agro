@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MaintenanceScreen from "@/components/MaintenanceScreen";
 import { company } from "@/content/company";
+import { getSiteOrigin } from "@/lib/site";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -20,19 +21,12 @@ const workSans = Work_Sans({
   weight: ["400", "500", "600"]
 });
 
-// Safe metadataBase — prefer production domain; empty/invalid env must not break the build
+// metadataBase / OG URL — always a valid absolute HTTPS origin
 function getMetadataBase(): URL {
-  const fallback = "https://www.busiafamerssuupplies.com";
-  const raw = (process.env.NEXT_PUBLIC_SITE_URL || "").trim();
-  if (!raw) return new URL(fallback);
-  try {
-    return new URL(raw);
-  } catch {
-    return new URL(fallback);
-  }
+  return new URL(getSiteOrigin() + "/");
 }
 
-const siteUrl = getMetadataBase().toString().replace(/\/$/, "");
+const siteUrl = getSiteOrigin();
 
 export const metadata: Metadata = {
   title: {
