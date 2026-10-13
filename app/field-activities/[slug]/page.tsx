@@ -35,7 +35,8 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   if (!activity) return {};
   return {
     title: `${activity.title} | ${company.name}`,
-    description: activity.excerpt || activity.description.slice(0, 160)
+    description: activity.excerpt || activity.description.slice(0, 160),
+    alternates: { canonical: `/field-activities/${activity.slug}` }
   };
 }
 

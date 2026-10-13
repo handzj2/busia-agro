@@ -6,7 +6,11 @@ import Button from "@/components/Button";
 import { MissionIcon, VisionIcon } from "@/components/Icons";
 import { company } from "@/content/company";
 
-export const metadata = { title: `About Us | ${company.name}` };
+export const metadata = {
+  title: `About Us | ${company.name}`,
+  description: `Learn about ${company.name} — serving farmers since ${company.foundedYear} with quality inputs, advice, and services across ${company.regionsServed.slice(0, 3).join(", ")} and beyond.`,
+  alternates: { canonical: "/about" }
+};
 
 export default function AboutPage() {
   return (

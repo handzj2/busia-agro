@@ -4,7 +4,11 @@ import Button from "@/components/Button";
 import { services } from "@/content/services";
 import { company } from "@/content/company";
 
-export const metadata = { title: `Services | ${company.name}` };
+export const metadata = {
+  title: `Services | ${company.name}`,
+  description: `Farm inputs, farmer advisory, equipment support, crop services and delivery from ${company.name}. Serving farmers across Eastern Uganda and beyond.`,
+  alternates: { canonical: "/services" }
+};
 
 export default function ServicesPage() {
   return (

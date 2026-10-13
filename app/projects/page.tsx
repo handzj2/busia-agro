@@ -3,7 +3,11 @@ import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/content/projects";
 import { company } from "@/content/company";
 
-export const metadata = { title: `Projects | ${company.name}` };
+export const metadata = {
+  title: `Projects | ${company.name}`,
+  description: `Project portfolio and partner work by ${company.name} in the Eastern region of Uganda.`,
+  alternates: { canonical: "/projects" }
+};
 
 export default function ProjectsPage() {
   return (

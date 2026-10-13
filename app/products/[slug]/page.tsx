@@ -15,7 +15,11 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const product = allProducts.find((p) => p.slug === params.slug);
   if (!product) return {};
-  return { title: `${product.name} | ${company.name}` };
+  return {
+    title: `${product.name} | ${company.name}`,
+    description: product.description || `Buy ${product.name} from ${company.name}. Quality agricultural inputs for Ugandan farmers.`,
+    alternates: { canonical: `/products/${product.slug}` }
+  };
 }
 
 // Product detail template — the page a customer lands on from a WhatsApp

@@ -20,9 +20,9 @@ const workSans = Work_Sans({
   weight: ["400", "500", "600"]
 });
 
-// Safe metadataBase — empty/invalid NEXT_PUBLIC_SITE_URL must not break the build
+// Safe metadataBase — prefer production domain; empty/invalid env must not break the build
 function getMetadataBase(): URL {
-  const fallback = "https://busia-farmers-supplies.vercel.app";
+  const fallback = "https://www.busiafamerssuupplies.com";
   const raw = (process.env.NEXT_PUBLIC_SITE_URL || "").trim();
   if (!raw) return new URL(fallback);
   try {
@@ -32,6 +32,8 @@ function getMetadataBase(): URL {
   }
 }
 
+const siteUrl = getMetadataBase().toString().replace(/\/$/, "");
+
 export const metadata: Metadata = {
   title: {
     default: `${company.name} | ${company.tagline}`,
@@ -39,6 +41,38 @@ export const metadata: Metadata = {
   },
   description: company.mission,
   metadataBase: getMetadataBase(),
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_UG",
+    url: siteUrl,
+    siteName: company.name,
+    title: `${company.name} | ${company.tagline}`,
+    description: company.mission,
+    images: [
+      {
+        url: "/icon-512.png",
+        width: 512,
+        height: 512,
+        alt: company.name
+      }
+    ]
+  },
+  twitter: {
+    card: "summary",
+    title: `${company.name} | ${company.tagline}`,
+    description: company.mission
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true
+    }
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

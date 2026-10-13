@@ -23,6 +23,8 @@ export function middleware(request: NextRequest) {
   if (
     pathname === "/maintenance" ||
     pathname.startsWith("/maintenance/") ||
+    pathname === "/robots.txt" ||
+    pathname === "/sitemap.xml" ||
     pathname.startsWith("/_next/") ||
     pathname.startsWith("/favicon") ||
     pathname.startsWith("/icon") ||

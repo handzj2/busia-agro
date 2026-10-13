@@ -3,7 +3,11 @@ import Button from "@/components/Button";
 import { MapPinIcon } from "@/components/Icons";
 import { company } from "@/content/company";
 
-export const metadata = { title: `Contact | ${company.name}` };
+export const metadata = {
+  title: `Contact | ${company.name}`,
+  description: `Contact ${company.name} by WhatsApp, phone, email or visit our branch in Mbale. We respond within 24 hours.`,
+  alternates: { canonical: "/contact" }
+};
 
 const FORMSPREE_ID =
   process.env.NEXT_PUBLIC_FORMSPREE_ID || "xzebwpva";

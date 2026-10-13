@@ -3,7 +3,11 @@ import ActivityCard from "@/components/ActivityCard";
 import { fieldActivities } from "@/content/activities";
 import { company } from "@/content/company";
 
-export const metadata = { title: `Field Activities | ${company.name}` };
+export const metadata = {
+  title: `Field Activities | ${company.name}`,
+  description: `Field support, training and on-ground farmer activities by ${company.name} in Bududa, Manafwa, Busia and surrounding districts.`,
+  alternates: { canonical: "/field-activities" }
+};
 
 export default function FieldActivitiesPage() {
   const sorted = [...fieldActivities].sort(
