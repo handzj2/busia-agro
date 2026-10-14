@@ -86,7 +86,7 @@ export default function ProductRangeStrip({ limit = 12, compact = false }: Props
                     alt={product.imageAlt || product.name}
                     width={140}
                     height={140}
-                    className="hover-zoom h-full w-full object-contain"
+                    className="img-alive h-full w-full object-contain"
                     sizes="(min-width: 768px) 15vw, 33vw"
                     priority={i < 4}
                   />

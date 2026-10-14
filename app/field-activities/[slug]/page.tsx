@@ -83,7 +83,7 @@ export default function FieldActivityDetailPage({
               src={activity.media[0].src}
               alt={activity.media[0].alt || activity.title}
               fill
-              className="object-cover"
+              className="hero-live object-cover"
               priority
               sizes="100vw"
             />
@@ -262,7 +262,7 @@ export default function FieldActivityDetailPage({
                       src={m.src}
                       alt={m.alt}
                       fill
-                      className="hover-zoom object-cover"
+                      className="img-alive object-cover"
                       sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                     />
                   ) : (

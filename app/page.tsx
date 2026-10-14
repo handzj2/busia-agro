@@ -43,7 +43,7 @@ export default function HomePage() {
                 looking for different things from the first click, so the
                 hero routes each straight to it instead of one generic CTA. */}
             <div className="hero-in-delay-3 mt-8 flex flex-wrap gap-4">
-              <Button href="/products" variant="primary">
+              <Button href="/products" variant="primary" className="guide-pulse">
                 For Buyers — Browse Products
               </Button>
               <Button href="/projects" variant="secondary">
@@ -87,7 +87,7 @@ export default function HomePage() {
                           alt={product.imageAlt || product.name}
                           width={160}
                           height={200}
-                          className="hover-zoom mx-auto h-28 w-auto object-contain sm:h-32 md:h-36"
+                          className="img-alive mx-auto h-28 w-auto object-contain sm:h-32 md:h-36"
                           priority={i < 3}
                         />
                       </span>

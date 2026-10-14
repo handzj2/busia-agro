@@ -42,7 +42,7 @@ export default function BrandBanner({
             alt="Busia Farmers Supplies Ltd — dealers in fertilizers, chemicals, quality seeds, consultation, field visits, contract farming and seedling raising. Call 0774 201 233 or 0772 898 049. Mbale City."
             width={1376}
             height={768}
-            className="h-auto w-full object-contain"
+            className="img-alive h-auto w-full object-contain"
             priority={eager}
             quality={92}
             sizes="(max-width: 1100px) 100vw, 1100px"

@@ -240,6 +240,90 @@
   }
 }
 
+
+  /* ── Lively but calm motion ───────────────────────── */
+  .img-alive {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+  }
+  .group:hover .img-alive,
+  .img-alive:hover {
+    transform: scale(1.04);
+  }
+
+  /* Slow living ken-burns on hero photos (not frozen) */
+  .hero-live {
+    animation: hero-ken 28s ease-in-out infinite alternate;
+  }
+  @keyframes hero-ken {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.06) translate(-1.5%, -1%); }
+  }
+
+  /* Staggered entrance for lists/cards */
+  .reveal {
+    animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .reveal-delay-1 { animation-delay: 0.08s; }
+  .reveal-delay-2 { animation-delay: 0.16s; }
+  .reveal-delay-3 { animation-delay: 0.24s; }
+  .reveal-delay-4 { animation-delay: 0.32s; }
+  .reveal-delay-5 { animation-delay: 0.4s; }
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Soft guide pulse on primary CTAs */
+  .guide-pulse {
+    animation: guide-soft 2.8s ease-in-out infinite;
+  }
+  @keyframes guide-soft {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 160, 23, 0); }
+    50% { box-shadow: 0 0 0 6px rgba(212, 160, 23, 0.18); }
+  }
+
+  /* Product shelf items breathe slightly */
+  .breathe {
+    animation: breathe 5s ease-in-out infinite;
+  }
+  .breathe-2 { animation-delay: 0.7s; }
+  .breathe-3 { animation-delay: 1.4s; }
+  .breathe-4 { animation-delay: 2.1s; }
+  @keyframes breathe {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  /* Clear focus ring for keyboard users */
+  .guide-link {
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .guide-link:hover {
+    transform: translateX(3px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-live,
+    .reveal,
+    .guide-pulse,
+    .breathe,
+    .img-alive {
+      animation: none !important;
+    }
+    .group:hover .img-alive,
+    .img-alive:hover,
+    .guide-link:hover {
+      transform: none;
+    }
+  }
+
+
 /* ── Dark mode surface helpers ───────────────────────── */
 .dark {
   color-scheme: dark;

@@ -26,7 +26,7 @@ export default function FieldActivitiesPage() {
             fill
             priority
             quality={90}
-            className="object-cover object-center"
+            className="hero-live object-cover object-center"
             sizes="(max-width: 1152px) 100vw, 1152px"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-ink/10" />
