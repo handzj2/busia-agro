@@ -122,38 +122,38 @@
     }
   }
 
-  /* Hero product bags — gentle float, staggered so they feel alive */
+  /* Hero product shelf — subtle lift only, aligned grid does the layout */
   .hero-bag {
-    animation: hero-bag-float 5.5s ease-in-out infinite;
+    animation: hero-bag-lift 4.5s ease-in-out infinite;
   }
   .hero-bag-1 { animation-delay: 0s; }
-  .hero-bag-2 { animation-delay: 0.6s; }
-  .hero-bag-3 { animation-delay: 1.2s; }
-  .hero-bag-4 { animation-delay: 1.8s; }
-  .hero-bag-5 { animation-delay: 2.4s; }
-  .hero-bag-6 { animation-delay: 3s; }
-  @keyframes hero-bag-float {
+  .hero-bag-2 { animation-delay: 0.5s; }
+  .hero-bag-3 { animation-delay: 1s; }
+  .hero-bag-4 { animation-delay: 1.5s; }
+  .hero-bag-5 { animation-delay: 2s; }
+  .hero-bag-6 { animation-delay: 2.5s; }
+  @keyframes hero-bag-lift {
     0%,
     100% {
-      transform: translateY(0) rotate(0deg);
+      transform: translateY(0);
     }
     50% {
-      transform: translateY(-12px) rotate(0.5deg);
+      transform: translateY(-4px);
     }
   }
 
-  /* Brand banner entrance */
+  /* Brand banner — crisp entrance, no fade that leaves it looking washed out */
   .hero-banner {
-    animation: hero-banner-in 0.9s ease-out 0.35s both;
+    animation: hero-banner-in 0.7s ease-out both;
   }
   @keyframes hero-banner-in {
     from {
-      opacity: 0;
-      transform: translateY(18px) scale(0.98);
+      opacity: 0.6;
+      transform: translateY(12px);
     }
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
   }
 

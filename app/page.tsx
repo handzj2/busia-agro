@@ -50,8 +50,8 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-in-delay-2 relative md:col-span-2">
-            {/* Animated product showcase — more real stock products float gently */}
-            <div className="relative mx-auto h-[460px] w-full max-w-md md:h-[520px]">
+            {/* Aligned product shelf — 6 featured items, clear grid, subtle motion */}
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {(() => {
                 const withImage = productCategories.flatMap((c) =>
                   c.products.filter((p) => p.image)
@@ -60,62 +60,47 @@ export default function HomePage() {
                   "yaramila-winner-50kg",
                   "yaramila-java-50kg",
                   "yara-microp-topdressing-chapa-meli-50kg",
-                  "dem-organic-fertilizer-25kg",
                   "weed-master-glyphosate-50sc-herbicide",
-                  "dryweed-396sl-herbicide",
                   "advanta-adv2309w-hybrid-maize-seed",
-                  "western-seed-haraka-wh301-hybrid-maize-seed",
-                  "syngenta-galil-300sc-insecticide",
-                  "syngenta-quadris-50wg-fungicide",
-                  "aglukon-wuxal-macromix-24-24-18-te",
-                  "falcon-gold-cal-max-liquid-fertilizer"
+                  "syngenta-galil-300sc-insecticide"
                 ];
                 const bySlug = Object.fromEntries(withImage.map((p) => [p.slug, p]));
                 const showcase = preferred
                   .map((s) => bySlug[s])
                   .filter(Boolean)
-                  .slice(0, 12);
-                const positions = [
-                  "left-0 top-2 z-10 w-[28%]",
-                  "left-[30%] top-0 z-20 w-[30%]",
-                  "right-0 top-4 z-10 w-[28%]",
-                  "left-1 top-[22%] z-30 w-[26%]",
-                  "left-[32%] top-[24%] z-20 w-[28%]",
-                  "right-1 top-[26%] z-30 w-[26%]",
-                  "left-0 top-[46%] z-10 w-[27%]",
-                  "left-[30%] top-[48%] z-30 w-[29%]",
-                  "right-0 top-[50%] z-20 w-[27%]",
-                  "left-2 top-[70%] z-20 w-[25%]",
-                  "left-[34%] top-[72%] z-10 w-[26%]",
-                  "right-2 top-[74%] z-30 w-[25%]"
-                ];
+                  .slice(0, 6);
                 return showcase.map((product, i) => (
                   <Link
                     key={product.slug}
                     href={`/products/${product.slug}`}
-                    className={`absolute ${positions[i]} block`}
+                    className="group block"
                     title={product.name}
                   >
-                    <span
-                      className={`hero-bag hero-bag-${(i % 6) + 1} block`}
-                    >
-                      <Image
-                        src={product.image}
-                        alt={product.imageAlt || product.name}
-                        width={180}
-                        height={240}
-                        className="h-auto w-full drop-shadow-lg transition-transform duration-300 ease-out hover:scale-110"
-                        priority={i < 4}
-                      />
-                    </span>
+                    <div className="overflow-hidden rounded-sm border border-stone/20 bg-paper p-2 shadow-sm transition-shadow duration-300 group-hover:border-harvest/40 group-hover:shadow-md">
+                      <span
+                        className={`hero-bag hero-bag-${(i % 6) + 1} block`}
+                      >
+                        <Image
+                          src={product.image}
+                          alt={product.imageAlt || product.name}
+                          width={160}
+                          height={200}
+                          className="mx-auto h-28 w-auto object-contain sm:h-32 md:h-36 transition-transform duration-300 ease-out group-hover:scale-110"
+                          priority={i < 3}
+                        />
+                      </span>
+                    </div>
+                    <p className="mt-1.5 line-clamp-2 text-center text-[11px] leading-tight text-stone sm:text-xs">
+                      {product.name}
+                    </p>
                   </Link>
                 ));
               })()}
             </div>
-            <p className="mt-3 text-center text-sm text-stone">
+            <p className="mt-4 text-center text-sm text-stone">
               <Link
                 href="/products"
-                className="text-clay underline decoration-clay/40 underline-offset-4 hover:decoration-clay"
+                className="font-medium text-clay underline decoration-clay/40 underline-offset-4 hover:decoration-clay"
               >
                 Browse all fertilizers, seeds & chemicals →
               </Link>
@@ -124,25 +109,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BRAND BANNER — product range promo from client artwork */}
-      <section className="border-b border-stone/15 bg-paper">
-        <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10">
-          <div className="hero-banner overflow-hidden rounded-sm border border-stone/20 shadow-sm">
+      {/* BRAND BANNER — sharpened client artwork, full visual weight */}
+      <section className="bg-field">
+        <div className="mx-auto max-w-6xl px-0 sm:px-4 md:px-6">
+          <div className="hero-banner overflow-hidden sm:rounded-sm sm:my-6 md:my-8 shadow-lg ring-1 ring-black/10">
             <Image
               src="/images/brand/product-range-banner.jpg"
               alt="Busia Farmers Supplies Ltd — fertilizers, chemicals, quality seeds, consultation, field visits, contract farming and seedling raising. Contact 0774201233"
-              width={1200}
-              height={480}
+              width={1430}
+              height={934}
               className="h-auto w-full object-cover"
               priority
+              quality={90}
             />
           </div>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center text-sm text-stone">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 bg-field px-4 pb-6 text-center text-sm text-paper/90">
             <span>Fertilizers · Chemicals · Seeds · Advisory</span>
-            <Link href="/products" className="font-medium text-field underline-offset-4 hover:underline">
+            <Link href="/products" className="font-medium text-harvest underline-offset-4 hover:underline">
               Shop products
             </Link>
-            <Link href="/contact" className="font-medium text-field underline-offset-4 hover:underline">
+            <Link href="/contact" className="font-medium text-harvest underline-offset-4 hover:underline">
               Contact us
             </Link>
           </div>
