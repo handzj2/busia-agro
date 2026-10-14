@@ -45,7 +45,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       </Link>
 
       <div className="mt-8 grid gap-10 md:grid-cols-2">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-parchment">
+        <div className="group relative aspect-[3/4] overflow-hidden rounded-sm bg-parchment">
           {product.image && (
             <Image
               src={product.image}
@@ -53,7 +53,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
               fill
               priority
               sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
             />
           )}
         </div>
@@ -95,14 +95,14 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                 href={`/products/${item.slug}`}
                 className="card-hover block border border-stone/20 bg-paper p-4 hover:border-harvest/50"
               >
-                <div className="relative aspect-[3/4] overflow-hidden bg-parchment">
+                <div className="group relative aspect-[3/4] overflow-hidden bg-parchment">
                   {item.image && (
                     <Image
                       src={item.image}
                       alt={item.imageAlt || item.name}
                       fill
                       sizes="(min-width: 640px) 33vw, 100vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
                     />
                   )}
                 </div>

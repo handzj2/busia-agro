@@ -45,7 +45,7 @@ export default function ProductCard({
             alt={product.imageAlt || product.name}
             fill
             sizes="(min-width: 1024px) 352px, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+            className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
           />
         ) : (
           <div

@@ -50,33 +50,44 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-in-delay-2 relative md:col-span-2">
-            {/* Animated product showcase — real stock products float gently */}
-            <div className="relative mx-auto h-[400px] w-full max-w-md md:h-[440px]">
+            {/* Animated product showcase — more real stock products float gently */}
+            <div className="relative mx-auto h-[460px] w-full max-w-md md:h-[520px]">
               {(() => {
                 const withImage = productCategories.flatMap((c) =>
                   c.products.filter((p) => p.image)
                 );
-                // Featured mix: Yara fertilizers first, then seeds & crop protection
                 const preferred = [
                   "yaramila-winner-50kg",
                   "yaramila-java-50kg",
                   "yara-microp-topdressing-chapa-meli-50kg",
+                  "dem-organic-fertilizer-25kg",
                   "weed-master-glyphosate-50sc-herbicide",
+                  "dryweed-396sl-herbicide",
                   "advanta-adv2309w-hybrid-maize-seed",
-                  "syngenta-galil-300sc-insecticide"
+                  "western-seed-haraka-wh301-hybrid-maize-seed",
+                  "syngenta-galil-300sc-insecticide",
+                  "syngenta-quadris-50wg-fungicide",
+                  "aglukon-wuxal-macromix-24-24-18-te",
+                  "falcon-gold-cal-max-liquid-fertilizer"
                 ];
                 const bySlug = Object.fromEntries(withImage.map((p) => [p.slug, p]));
                 const showcase = preferred
                   .map((s) => bySlug[s])
                   .filter(Boolean)
-                  .slice(0, 6);
+                  .slice(0, 12);
                 const positions = [
-                  "left-0 top-8 z-10 w-[34%]",
-                  "right-0 top-2 z-20 w-[38%]",
-                  "left-[18%] top-[28%] z-30 w-[36%]",
-                  "right-[8%] bottom-[18%] z-20 w-[32%]",
-                  "left-1 top-[58%] z-10 w-[30%]",
-                  "right-[2%] top-[48%] z-30 w-[28%]"
+                  "left-0 top-2 z-10 w-[28%]",
+                  "left-[30%] top-0 z-20 w-[30%]",
+                  "right-0 top-4 z-10 w-[28%]",
+                  "left-1 top-[22%] z-30 w-[26%]",
+                  "left-[32%] top-[24%] z-20 w-[28%]",
+                  "right-1 top-[26%] z-30 w-[26%]",
+                  "left-0 top-[46%] z-10 w-[27%]",
+                  "left-[30%] top-[48%] z-30 w-[29%]",
+                  "right-0 top-[50%] z-20 w-[27%]",
+                  "left-2 top-[70%] z-20 w-[25%]",
+                  "left-[34%] top-[72%] z-10 w-[26%]",
+                  "right-2 top-[74%] z-30 w-[25%]"
                 ];
                 return showcase.map((product, i) => (
                   <Link
@@ -86,15 +97,15 @@ export default function HomePage() {
                     title={product.name}
                   >
                     <span
-                      className={`hero-bag hero-bag-${(i % 6) + 1} block transition-transform duration-300 hover:scale-105`}
+                      className={`hero-bag hero-bag-${(i % 6) + 1} block`}
                     >
                       <Image
                         src={product.image}
                         alt={product.imageAlt || product.name}
-                        width={200}
-                        height={260}
-                        className="h-auto w-full drop-shadow-xl"
-                        priority={i < 3}
+                        width={180}
+                        height={240}
+                        className="h-auto w-full drop-shadow-lg transition-transform duration-300 ease-out hover:scale-110"
+                        priority={i < 4}
                       />
                     </span>
                   </Link>
