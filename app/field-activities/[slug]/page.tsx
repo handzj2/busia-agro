@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { fieldActivities } from "@/content/activities";
 import { company } from "@/content/company";
@@ -76,9 +77,18 @@ export default function FieldActivityDetailPage({
 
       {/* Hero image + overlay title */}
       <section className="relative mt-6">
-        <div className="aspect-[21/9] w-full overflow-hidden bg-parchment md:aspect-[3/1]">
-          {/* Placeholder until real coverImage is supplied */}
-          <div className="flex h-full w-full items-end bg-gradient-to-t from-ink/70 via-ink/20 to-transparent">
+        <div className="relative aspect-[21/9] w-full overflow-hidden bg-parchment md:aspect-[3/1]">
+          {activity.media?.[0]?.type === "image" && activity.media[0].src ? (
+            <Image
+              src={activity.media[0].src}
+              alt={activity.media[0].alt || activity.title}
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+          ) : null}
+          <div className="absolute inset-0 flex h-full w-full items-end bg-gradient-to-t from-ink/75 via-ink/25 to-transparent">
             <div className="mx-auto w-full max-w-6xl px-6 pb-8 pt-16 text-paper">
               <span className="inline-block rounded-sm bg-harvest/90 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-ink">
                 {activity.activityType}
@@ -245,10 +255,20 @@ export default function FieldActivityDetailPage({
               {activity.media.map((m) => (
                 <div
                   key={m.src}
-                  className="aspect-[4/3] overflow-hidden rounded-sm bg-parchment"
-                  role="img"
-                  aria-label={m.alt}
-                />
+                  className="group relative aspect-[4/3] overflow-hidden rounded-sm bg-parchment"
+                >
+                  {m.type === "image" ? (
+                    <Image
+                      src={m.src}
+                      alt={m.alt}
+                      fill
+                      className="hover-zoom object-cover"
+                      sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+                    />
+                  ) : (
+                    <div className="h-full w-full bg-parchment" role="img" aria-label={m.alt} />
+                  )}
+                </div>
               ))}
             </div>
           </div>

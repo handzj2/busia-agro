@@ -14,6 +14,7 @@ import { fieldActivities } from "@/content/activities";
 import { projects } from "@/content/projects";
 import { productCategories } from "@/content/products";
 import BrandBanner from "@/components/BrandBanner";
+import ProductRangeStrip from "@/components/ProductRangeStrip";
 
 export default function HomePage() {
   const featuredActivities = fieldActivities.slice(0, 2);
@@ -111,6 +112,8 @@ export default function HomePage() {
       </section>
 
       <BrandBanner />
+
+      <ProductRangeStrip />
 
       {/* TRUST STRIP */}
       <TrustStrip variant="green" />
