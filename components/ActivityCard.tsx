@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FieldActivity } from "@/lib/types";
 
 function formatDate(iso: string) {
