@@ -96,6 +96,30 @@ export const productCategories: ProductCategory[] = [
     name: "Fertilizers",
     products: [
       {
+        slug: "yaramila-winner-50kg",
+        name: "YaraMila Winner (50 kg)",
+        description: "YaraMila Winner compound fertilizer in a 50 kg bag — balanced nutrition for strong crop growth.",
+        image: "/images/products/fertilizers/yaramila-winner-50kg.jpg",
+        imageAlt: "YaraMila Winner 50 kg fertilizer bag",
+        availability: "In stock"
+      },
+      {
+        slug: "yaramila-java-50kg",
+        name: "YaraMila Java (50 kg)",
+        description: "YaraMila Java compound fertilizer in a 50 kg bag — quality nutrients for maize and other crops.",
+        image: "/images/products/fertilizers/yaramila-java-50kg.jpg",
+        imageAlt: "YaraMila Java 50 kg fertilizer bag",
+        availability: "In stock"
+      },
+      {
+        slug: "yara-microp-topdressing-chapa-meli-50kg",
+        name: "Yara Microp Topdressing — Chapa Meli (50 kg)",
+        description: "Yara Microp topdressing fertilizer, Chapa Meli, 50 kg net — for maize and cereal top dressing.",
+        image: "/images/products/fertilizers/yara-microp-topdressing-chapa-meli-50kg.jpg",
+        imageAlt: "Yara Microp Chapa Meli topdressing fertilizer 50 kg bag",
+        availability: "In stock"
+      },
+      {
         slug: "dem-organic-fertilizer-25kg",
         name: "DEM Organic Fertilizer (25 kg)",
         description: "Organic fertilizer for planting and top dressing, 25 kg bag.",

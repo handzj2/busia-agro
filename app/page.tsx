@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import ActivityCard from "@/components/ActivityCard";
@@ -11,6 +12,7 @@ import { company } from "@/content/company";
 import { services } from "@/content/services";
 import { fieldActivities } from "@/content/activities";
 import { projects } from "@/content/projects";
+import { productCategories } from "@/content/products";
 
 export default function HomePage() {
   const featuredActivities = fieldActivities.slice(0, 2);
@@ -47,30 +49,48 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
-          <div className="hero-in-delay-2 md:col-span-2">
-            <div className="card-hover border border-stone/25 bg-paper p-6">
-              <p className="text-sm text-clay">Latest field record</p>
-              <p className="mt-3 font-serif text-xl text-ink">
-                {fieldActivities[0].title}
-              </p>
-              <p className="mt-1 text-sm text-stone">
-                {new Date(fieldActivities[0].date).toLocaleDateString("en-UG", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric"
-                })}{" "}
-                — {fieldActivities[0].location}
-              </p>
-              <p className="mt-3 text-sm text-stone">
-                {fieldActivities[0].description}
-              </p>
-              <Link
-                href="/field-activities"
-                className="mt-4 inline-block text-sm text-clay underline decoration-clay/40 underline-offset-4 hover:decoration-clay"
-              >
-                View all field activities
-              </Link>
+          <div className="hero-in-delay-2 relative md:col-span-2">
+            {/* Animated product showcase — real stock bags float gently */}
+            <div className="relative mx-auto h-[340px] w-full max-w-sm md:h-[380px]">
+              {(() => {
+                const fertilizers =
+                  productCategories.find((c) => c.slug === "fertilizers")
+                    ?.products.filter((p) => p.image) ?? [];
+                const showcase = fertilizers.slice(0, 3);
+                const positions = [
+                  "left-2 top-6 z-10 w-[42%] md:left-0",
+                  "right-2 top-0 z-20 w-[48%] md:right-0",
+                  "bottom-2 left-[27%] z-30 w-[46%]"
+                ];
+                const bagClass = ["hero-bag hero-bag-1", "hero-bag hero-bag-2", "hero-bag hero-bag-3"];
+                return showcase.map((product, i) => (
+                  <Link
+                    key={product.slug}
+                    href={`/products/${product.slug}`}
+                    className={`absolute ${positions[i]} block`}
+                  >
+                    <span className={`block ${bagClass[i]} transition-transform duration-300 hover:scale-105`}>
+                      <Image
+                        src={product.image}
+                        alt={product.imageAlt || product.name}
+                        width={220}
+                        height={280}
+                        className="h-auto w-full drop-shadow-xl"
+                        priority={i < 2}
+                      />
+                    </span>
+                  </Link>
+                ));
+              })()}
             </div>
+            <p className="mt-4 text-center text-sm text-stone">
+              <Link
+                href="/products"
+                className="text-clay underline decoration-clay/40 underline-offset-4 hover:decoration-clay"
+              >
+                Quality fertilizers & inputs in stock →
+              </Link>
+            </p>
           </div>
         </div>
       </section>
