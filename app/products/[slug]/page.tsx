@@ -53,7 +53,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
               fill
               priority
               sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
+              className="hover-zoom object-cover"
             />
           )}
         </div>
@@ -102,7 +102,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                       alt={item.imageAlt || item.name}
                       fill
                       sizes="(min-width: 640px) 33vw, 100vw"
-                      className="object-cover transition-transform duration-300 ease-out group-hover:scale-110"
+                      className="hover-zoom object-cover"
                     />
                   )}
                 </div>

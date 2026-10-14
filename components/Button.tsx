@@ -44,7 +44,7 @@ export default function Button({
   rel
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-sm font-medium transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-harvest";
+    "btn-press inline-flex items-center justify-center gap-2 rounded-sm font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-harvest";
   const classes = `${base} ${variantClasses[variant]} ${sizeClasses[size]} ${
     fullWidth ? "w-full" : ""
   } ${className}`;

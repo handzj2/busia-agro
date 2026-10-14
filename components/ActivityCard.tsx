@@ -32,7 +32,7 @@ export default function ActivityCard({ activity }: { activity: FieldActivity }) 
           {activity.media.slice(0, 3).map((m) => (
             <div
               key={m.src}
-              className="aspect-[4/3] overflow-hidden rounded-sm bg-parchment transition-transform duration-300 ease-out hover:scale-110"
+              className="aspect-[4/3] overflow-hidden rounded-sm bg-parchment hover-zoom transition-transform"
               role="img"
               aria-label={m.alt}
               // NOTE: swap this placeholder block for a real next/image once

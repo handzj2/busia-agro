@@ -97,6 +97,51 @@
     box-shadow: 0 12px 24px -12px rgba(22, 36, 26, 0.25);
   }
 
+  /* Subtle shared hover vocabulary */
+  .hover-lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -12px rgba(22, 36, 26, 0.22);
+  }
+  .hover-zoom {
+    transition: transform 0.3s ease-out;
+  }
+  .group:hover .hover-zoom,
+  .hover-zoom:hover {
+    transform: scale(1.06);
+  }
+  .hover-fade {
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  .btn-press {
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  .btn-press:hover {
+    transform: translateY(-1px);
+  }
+  .btn-press:active {
+    transform: translateY(0);
+  }
+  .banner-hover {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .banner-hover:hover {
+    transform: scale(1.01);
+    box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.35);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hover-lift:hover,
+    .group:hover .hover-zoom,
+    .hover-zoom:hover,
+    .btn-press:hover,
+    .btn-press:active,
+    .banner-hover:hover {
+      transform: none;
+    }
+  }
+
   /* One orchestrated entrance sequence for the hero on first load — not
      repeated per-section on scroll, which is the generic AI-page tell. */
   .hero-in {

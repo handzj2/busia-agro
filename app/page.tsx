@@ -76,7 +76,7 @@ export default function HomePage() {
                     className="group block"
                     title={product.name}
                   >
-                    <div className="overflow-hidden rounded-sm border border-stone/20 bg-paper p-2 shadow-sm transition-shadow duration-300 group-hover:border-harvest/40 group-hover:shadow-md">
+                    <div className="hover-lift overflow-hidden rounded-sm border border-stone/20 bg-paper p-2 shadow-sm group-hover:border-harvest/50">
                       <span
                         className={`hero-bag hero-bag-${(i % 6) + 1} block`}
                       >
@@ -85,12 +85,12 @@ export default function HomePage() {
                           alt={product.imageAlt || product.name}
                           width={160}
                           height={200}
-                          className="mx-auto h-28 w-auto object-contain sm:h-32 md:h-36 transition-transform duration-300 ease-out group-hover:scale-110"
+                          className="hover-zoom mx-auto h-28 w-auto object-contain sm:h-32 md:h-36"
                           priority={i < 3}
                         />
                       </span>
                     </div>
-                    <p className="mt-1.5 line-clamp-2 text-center text-[11px] leading-tight text-stone sm:text-xs">
+                    <p className="mt-1.5 line-clamp-2 text-center text-[11px] leading-tight text-stone transition-colors duration-200 group-hover:text-ink sm:text-xs">
                       {product.name}
                     </p>
                   </Link>
@@ -112,7 +112,7 @@ export default function HomePage() {
       {/* BRAND BANNER — sharpened client artwork, full visual weight */}
       <section className="bg-field">
         <div className="mx-auto max-w-6xl px-0 sm:px-4 md:px-6">
-          <div className="hero-banner overflow-hidden sm:rounded-sm sm:my-6 md:my-8 shadow-lg ring-1 ring-black/10">
+          <div className="hero-banner banner-hover overflow-hidden sm:rounded-sm sm:my-6 md:my-8 shadow-lg ring-1 ring-black/10">
             <Image
               src="/images/brand/product-range-banner.jpg"
               alt="Busia Farmers Supplies Ltd — fertilizers, chemicals, quality seeds, consultation, field visits, contract farming and seedling raising. Contact 0774201233"
