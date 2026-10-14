@@ -50,47 +50,90 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-in-delay-2 relative md:col-span-2">
-            {/* Animated product showcase — real stock bags float gently */}
-            <div className="relative mx-auto h-[340px] w-full max-w-sm md:h-[380px]">
+            {/* Animated product showcase — real stock products float gently */}
+            <div className="relative mx-auto h-[400px] w-full max-w-md md:h-[440px]">
               {(() => {
-                const fertilizers =
-                  productCategories.find((c) => c.slug === "fertilizers")
-                    ?.products.filter((p) => p.image) ?? [];
-                const showcase = fertilizers.slice(0, 3);
-                const positions = [
-                  "left-2 top-6 z-10 w-[42%] md:left-0",
-                  "right-2 top-0 z-20 w-[48%] md:right-0",
-                  "bottom-2 left-[27%] z-30 w-[46%]"
+                const withImage = productCategories.flatMap((c) =>
+                  c.products.filter((p) => p.image)
+                );
+                // Featured mix: Yara fertilizers first, then seeds & crop protection
+                const preferred = [
+                  "yaramila-winner-50kg",
+                  "yaramila-java-50kg",
+                  "yara-microp-topdressing-chapa-meli-50kg",
+                  "weed-master-glyphosate-50sc-herbicide",
+                  "advanta-adv2309w-hybrid-maize-seed",
+                  "syngenta-galil-300sc-insecticide"
                 ];
-                const bagClass = ["hero-bag hero-bag-1", "hero-bag hero-bag-2", "hero-bag hero-bag-3"];
+                const bySlug = Object.fromEntries(withImage.map((p) => [p.slug, p]));
+                const showcase = preferred
+                  .map((s) => bySlug[s])
+                  .filter(Boolean)
+                  .slice(0, 6);
+                const positions = [
+                  "left-0 top-8 z-10 w-[34%]",
+                  "right-0 top-2 z-20 w-[38%]",
+                  "left-[18%] top-[28%] z-30 w-[36%]",
+                  "right-[8%] bottom-[18%] z-20 w-[32%]",
+                  "left-1 top-[58%] z-10 w-[30%]",
+                  "right-[2%] top-[48%] z-30 w-[28%]"
+                ];
                 return showcase.map((product, i) => (
                   <Link
                     key={product.slug}
                     href={`/products/${product.slug}`}
                     className={`absolute ${positions[i]} block`}
+                    title={product.name}
                   >
-                    <span className={`block ${bagClass[i]} transition-transform duration-300 hover:scale-105`}>
+                    <span
+                      className={`hero-bag hero-bag-${(i % 6) + 1} block transition-transform duration-300 hover:scale-105`}
+                    >
                       <Image
                         src={product.image}
                         alt={product.imageAlt || product.name}
-                        width={220}
-                        height={280}
+                        width={200}
+                        height={260}
                         className="h-auto w-full drop-shadow-xl"
-                        priority={i < 2}
+                        priority={i < 3}
                       />
                     </span>
                   </Link>
                 ));
               })()}
             </div>
-            <p className="mt-4 text-center text-sm text-stone">
+            <p className="mt-3 text-center text-sm text-stone">
               <Link
                 href="/products"
                 className="text-clay underline decoration-clay/40 underline-offset-4 hover:decoration-clay"
               >
-                Quality fertilizers & inputs in stock →
+                Browse all fertilizers, seeds & chemicals →
               </Link>
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* BRAND BANNER — product range promo from client artwork */}
+      <section className="border-b border-stone/15 bg-paper">
+        <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10">
+          <div className="hero-banner overflow-hidden rounded-sm border border-stone/20 shadow-sm">
+            <Image
+              src="/images/brand/product-range-banner.jpg"
+              alt="Busia Farmers Supplies Ltd — fertilizers, chemicals, quality seeds, consultation, field visits, contract farming and seedling raising. Contact 0774201233"
+              width={1200}
+              height={480}
+              className="h-auto w-full object-cover"
+              priority
+            />
+          </div>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center text-sm text-stone">
+            <span>Fertilizers · Chemicals · Seeds · Advisory</span>
+            <Link href="/products" className="font-medium text-field underline-offset-4 hover:underline">
+              Shop products
+            </Link>
+            <Link href="/contact" className="font-medium text-field underline-offset-4 hover:underline">
+              Contact us
+            </Link>
           </div>
         </div>
       </section>

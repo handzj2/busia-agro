@@ -124,28 +124,42 @@
 
   /* Hero product bags — gentle float, staggered so they feel alive */
   .hero-bag {
-    animation: hero-bag-float 5s ease-in-out infinite;
+    animation: hero-bag-float 5.5s ease-in-out infinite;
   }
-  .hero-bag-1 {
-    animation-delay: 0s;
-  }
-  .hero-bag-2 {
-    animation-delay: 0.8s;
-  }
-  .hero-bag-3 {
-    animation-delay: 1.6s;
-  }
+  .hero-bag-1 { animation-delay: 0s; }
+  .hero-bag-2 { animation-delay: 0.6s; }
+  .hero-bag-3 { animation-delay: 1.2s; }
+  .hero-bag-4 { animation-delay: 1.8s; }
+  .hero-bag-5 { animation-delay: 2.4s; }
+  .hero-bag-6 { animation-delay: 3s; }
   @keyframes hero-bag-float {
     0%,
     100% {
-      transform: translateY(0);
+      transform: translateY(0) rotate(0deg);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-12px) rotate(0.5deg);
     }
   }
+
+  /* Brand banner entrance */
+  .hero-banner {
+    animation: hero-banner-in 0.9s ease-out 0.35s both;
+  }
+  @keyframes hero-banner-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .hero-bag {
+    .hero-bag,
+    .hero-banner {
       animation: none;
     }
   }
