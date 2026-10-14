@@ -109,21 +109,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BRAND BANNER — sharpened client artwork, full visual weight */}
+      {/* BRAND BANNER — client poster (source was low-res WhatsApp); sized to avoid pixelation */}
       <section className="bg-field">
-        <div className="mx-auto max-w-6xl px-0 sm:px-4 md:px-6">
-          <div className="hero-banner banner-hover overflow-hidden sm:rounded-sm sm:my-6 md:my-8 shadow-lg ring-1 ring-black/10">
+        <div className="mx-auto flex max-w-6xl flex-col items-center px-4 py-6 md:px-6 md:py-8">
+          <div className="hero-banner banner-hover w-full max-w-[900px] overflow-hidden rounded-sm shadow-lg ring-1 ring-black/15">
             <Image
               src="/images/brand/product-range-banner.jpg"
               alt="Busia Farmers Supplies Ltd — fertilizers, chemicals, quality seeds, consultation, field visits, contract farming and seedling raising. Contact 0774201233"
-              width={1430}
-              height={934}
-              className="h-auto w-full object-cover"
+              width={1200}
+              height={783}
+              className="h-auto w-full object-contain"
               priority
-              quality={90}
+              quality={95}
+              sizes="(max-width: 900px) 100vw, 900px"
             />
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 bg-field px-4 pb-6 text-center text-sm text-paper/90">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center text-sm text-paper/90">
             <span>Fertilizers · Chemicals · Seeds · Advisory</span>
             <Link href="/products" className="font-medium text-harvest underline-offset-4 hover:underline">
               Shop products
