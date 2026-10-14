@@ -115,6 +115,85 @@
   .hover-fade {
     transition: opacity 0.2s ease, color 0.2s ease;
   }
+  /* Button micro-interactions — shared by Button component */
+  .btn-micro {
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.22s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .btn-micro:hover {
+    transform: translateY(-2px);
+  }
+  .btn-micro:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 0.08s;
+  }
+  .btn-micro:focus-visible {
+    transform: translateY(-1px);
+  }
+  /* Label + icon nudge */
+  .btn-micro .btn-label {
+    transition: letter-spacing 0.2s ease, transform 0.2s ease;
+  }
+  .btn-micro:hover .btn-label {
+    letter-spacing: 0.01em;
+  }
+  .btn-micro .btn-icon {
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-micro:hover .btn-icon {
+    transform: translateX(2px);
+  }
+  /* Soft shine sweep on primary / whatsapp */
+  .btn-primary::after,
+  .btn-whatsapp::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.18),
+      transparent
+    );
+    pointer-events: none;
+    transition: none;
+  }
+  .btn-primary:hover::after,
+  .btn-whatsapp:hover::after {
+    animation: btn-shine 0.65s ease forwards;
+  }
+  @keyframes btn-shine {
+    from { left: -120%; }
+    to { left: 140%; }
+  }
+  /* Ghost underline grow */
+  .btn-ghost {
+    position: relative;
+  }
+  .btn-ghost::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.25s ease, left 0.25s ease;
+  }
+  .btn-ghost:hover::after {
+    left: 12%;
+    width: 76%;
+  }
+  /* Legacy alias */
   .btn-press {
     transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   }
@@ -313,12 +392,17 @@
     .reveal,
     .guide-pulse,
     .breathe,
-    .img-alive {
+    .img-alive,
+    .btn-primary:hover::after,
+    .btn-whatsapp:hover::after {
       animation: none !important;
     }
     .group:hover .img-alive,
     .img-alive:hover,
-    .guide-link:hover {
+    .guide-link:hover,
+    .btn-micro:hover,
+    .btn-micro:active,
+    .btn-micro:hover .btn-icon {
       transform: none;
     }
   }
