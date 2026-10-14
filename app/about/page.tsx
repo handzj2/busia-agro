@@ -5,6 +5,7 @@ import TrustStrip from "@/components/TrustStrip";
 import Button from "@/components/Button";
 import { MissionIcon, VisionIcon } from "@/components/Icons";
 import { company } from "@/content/company";
+import BrandBanner from "@/components/BrandBanner";
 
 export const metadata = {
   title: `About Us | ${company.name}`,
@@ -32,6 +33,8 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
+
+      <BrandBanner compact />
 
       <TrustStrip variant="green" />
 

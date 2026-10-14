@@ -6,6 +6,7 @@ import ProductCard from "@/components/ProductCard";
 import Button from "@/components/Button";
 import { productCategories } from "@/content/products";
 import { company } from "@/content/company";
+import BrandBanner from "@/components/BrandBanner";
 
 const ALL = "all";
 
@@ -45,6 +46,9 @@ export default function ProductsPage() {
         title="Our Products"
         description="Quality farm inputs, seeds, and equipment. Check availability and enquire on WhatsApp."
       />
+
+      <div className="-mx-6 mt-8 mb-4"><BrandBanner compact /></div>
+
 
       {/* Search + category filters */}
       <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

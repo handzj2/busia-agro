@@ -2,6 +2,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ActivityCard from "@/components/ActivityCard";
 import { fieldActivities } from "@/content/activities";
 import { company } from "@/content/company";
+import BrandBanner from "@/components/BrandBanner";
 
 export const metadata = {
   title: `Field Activities | ${company.name}`,
@@ -21,6 +22,9 @@ export default function FieldActivitiesPage() {
         title="Field Activities"
         description="A running record of trainings, demonstrations, and distribution work carried out in the communities we serve."
       />
+
+      <div className="-mx-6 mt-8 mb-4"><BrandBanner compact /></div>
+
       <div className="mt-12 divide-y divide-stone/20">
         {sorted.map((activity) => (
           <ActivityCard key={activity.slug} activity={activity} />

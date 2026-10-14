@@ -2,6 +2,7 @@ import SectionHeading from "@/components/SectionHeading";
 import Button from "@/components/Button";
 import { MapPinIcon } from "@/components/Icons";
 import { company } from "@/content/company";
+import BrandBanner from "@/components/BrandBanner";
 
 export const metadata = {
   title: `Contact | ${company.name}`,
@@ -47,6 +48,9 @@ export default function ContactPage() {
         title="Contact us"
         description="We respond within 24 hours. WhatsApp is usually fastest."
       />
+
+      <div className="-mx-6 mt-8"><BrandBanner compact /></div>
+
 
       {/* Contact channels */}
       <div className="mt-10 grid gap-4 sm:grid-cols-3">

@@ -3,6 +3,7 @@ import SectionHeading from "@/components/SectionHeading";
 import Button from "@/components/Button";
 import { services } from "@/content/services";
 import { company } from "@/content/company";
+import BrandBanner from "@/components/BrandBanner";
 
 export const metadata = {
   title: `Services | ${company.name}`,
@@ -18,6 +19,7 @@ export default function ServicesPage() {
         title="Our Services"
         description="What we offer to farmers, businesses, and partners."
       />
+      <div className="-mx-6 mt-8 mb-4"><BrandBanner compact /></div>
 
       {/* Alternating 2-col rows */}
       <div className="mt-14 space-y-16">
