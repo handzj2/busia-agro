@@ -34,7 +34,7 @@ export default function ProductCard({
   )}`;
 
   return (
-    <article className="card-hover reveal group flex flex-col border border-stone/20 bg-paper hover:border-harvest/50">
+    <article className="card-hover card-hover-line reveal group flex flex-col overflow-hidden border border-stone/20 bg-paper hover:border-harvest/50">
       <Link
         href={`/products/${product.slug}`}
         className="relative block aspect-[3/4] overflow-hidden bg-parchment"

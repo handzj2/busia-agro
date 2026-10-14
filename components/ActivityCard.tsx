@@ -12,7 +12,7 @@ function formatDate(iso: string) {
 
 export default function ActivityCard({ activity }: { activity: FieldActivity }) {
   return (
-    <article className="reveal border-b border-stone/20 py-8 first:pt-0 last:border-b-0">
+    <article className="reveal group border-b border-stone/20 py-8 transition-colors duration-300 first:pt-0 last:border-b-0 hover:bg-parchment/40">
       <div className="record-rule border-t-0 pt-0">
         <span className="font-serif text-lg text-ink">{formatDate(activity.date)}</span>
         <span className="text-sm text-stone">{activity.location}</span>

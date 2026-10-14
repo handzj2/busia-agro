@@ -90,11 +90,44 @@
      different effect per card type — so the interaction vocabulary stays
      coherent across the site. */
   .card-hover {
-    @apply transition-all duration-200 ease-out;
+    @apply transition-all duration-300 ease-out;
+    transition-property: transform, box-shadow, border-color, background-color;
   }
   .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -12px rgba(22, 36, 26, 0.25);
+    transform: translateY(-6px);
+    box-shadow:
+      0 14px 28px -12px rgba(22, 36, 26, 0.28),
+      0 4px 10px -6px rgba(22, 36, 26, 0.12);
+  }
+  .card-hover:active {
+    transform: translateY(-2px);
+    transition-duration: 0.12s;
+  }
+  /* Accent line that draws in along the top on hover */
+  .card-hover-line {
+    position: relative;
+  }
+  .card-hover-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 3px;
+    width: 0;
+    background: theme("colors.harvest");
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 2;
+  }
+  .card-hover-line:hover::before {
+    width: 100%;
+  }
+  /* Service-style left accent expands */
+  .card-accent {
+    transition: border-color 0.25s ease, padding-left 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card-accent:hover {
+    transform: translateX(4px);
+    box-shadow: 4px 0 0 0 theme("colors.harvest");
   }
 
   /* Subtle shared hover vocabulary */
@@ -402,7 +435,10 @@
     .guide-link:hover,
     .btn-micro:hover,
     .btn-micro:active,
-    .btn-micro:hover .btn-icon {
+    .btn-micro:hover .btn-icon,
+    .card-hover:hover,
+    .card-hover:active,
+    .card-accent:hover {
       transform: none;
     }
   }

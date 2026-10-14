@@ -10,7 +10,7 @@ function formatRange(start: string, end?: string) {
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="card-hover border border-stone/20 bg-paper p-7 hover:border-harvest/50">
+    <article className="card-hover card-hover-line group border border-stone/20 bg-paper p-7 hover:border-harvest/50">
       <div className="record-rule border-t-0 pt-0">
         <span className="text-sm text-stone">{formatRange(project.startDate, project.endDate)}</span>
         <span className="ml-auto text-sm text-clay">{project.location}</span>
